@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NerdQuizWPF", "NerdQuizWPF\NerdQuizWPF.csproj", "{AB80451F-C75A-4444-9D35-55AC1DECA695}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "NerdQuizSetup", "NerdQuizSetup\NerdQuizSetup.vdproj", "{19073BDA-BF9B-4045-BBD1-1B1F86D45EF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB80451F-C75A-4444-9D35-55AC1DECA695}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB80451F-C75A-4444-9D35-55AC1DECA695}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB80451F-C75A-4444-9D35-55AC1DECA695}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB80451F-C75A-4444-9D35-55AC1DECA695}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19073BDA-BF9B-4045-BBD1-1B1F86D45EF9}.Debug|Any CPU.ActiveCfg = Debug
+		{19073BDA-BF9B-4045-BBD1-1B1F86D45EF9}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

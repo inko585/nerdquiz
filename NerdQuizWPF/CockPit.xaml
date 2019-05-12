@@ -1,0 +1,237 @@
+﻿<Window x:Class="NerdQuizWPF.CockPit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NerdQuizWPF"
+        mc:Ignorable="d"
+        Title="NerdQuiz - Cockpit" Height="678" Width="1004">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition />
+
+        </Grid.RowDefinitions>
+        <Menu>
+            <MenuItem Header="Starten" Click="RunClick"></MenuItem>
+            <MenuItem Header="Beenden" Click="CloseGameClick"></MenuItem>
+            <MenuItem Header="x2" Click="x2Click"></MenuItem>
+            <MenuItem Header="Laden" Click="LoadQuestionsClick"></MenuItem>
+            <MenuItem Header="Speichern" Click="SaveClick"></MenuItem>
+
+        </Menu>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="51*"/>
+                <ColumnDefinition Width="148*"/>
+                <ColumnDefinition Width="199*"/>
+                <ColumnDefinition Width="199*"/>
+                <ColumnDefinition Width="200*"/>
+                <ColumnDefinition Width="199*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox  Background="LightGray" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Padding="5" Grid.Column="0" FontSize="16" FontWeight="Bold" Text="{Binding Cat1.Text, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"/>
+            <TextBox  Background="LightGray" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Padding="5" Grid.Column="2" FontSize="16" FontWeight="Bold" Text="{Binding Cat2.Text, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox  Background="LightGray" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Padding="5" Grid.Column="3" FontSize="16" FontWeight="Bold" Text="{Binding Cat3.Text, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox  Background="LightGray" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Padding="5" Grid.Column="4" FontSize="16" FontWeight="Bold" Text="{Binding Cat4.Text, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox  Background="LightGray" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Padding="5" Grid.Column="5" FontSize="16" FontWeight="Bold" Text="{Binding Cat5.Text, UpdateSourceTrigger=PropertyChanged}"/>
+            <Grid Grid.Row="1" Background="#FFFF5555" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox VerticalAlignment="Center"  Content="" IsEnabled="False" IsChecked="True" Height="16" HorizontalAlignment="Center"/>
+                <TextBox  VerticalAlignment="Center" BorderThickness="0" Grid.Column="1" Padding="5" FontSize="16" FontWeight="Bold" Background="Transparent" Text="{Binding P1.Name}"/>
+            </Grid>
+
+            <Grid Grid.Row="1" Background="#FFFFFF00" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox VerticalAlignment="Center"  Content="" IsEnabled="False" IsChecked="True" Height="16" HorizontalAlignment="Center"/>
+                <TextBox  VerticalAlignment="Center" BorderThickness="0"  Grid.Column="1" Padding="5" FontSize="16" FontWeight="Bold" Background="Transparent" Text="{Binding P2.Name}"/>
+            </Grid>
+
+            <Grid Grid.Row="1" Background="#FF5EFF66" Grid.Column="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox VerticalAlignment="Center"  IsEnabled="{Binding P3.Deselectable}" Content="" IsChecked="{Binding P3.IsActive}" Height="16" HorizontalAlignment="Center"/>
+                <TextBox  VerticalAlignment="Center" BorderThickness="0" Grid.Column="1" Padding="5" FontSize="16" FontWeight="Bold" Background="Transparent" Text="{Binding P3.Name}"/>
+            </Grid>
+            <Grid Grid.Row="1" Background="#FFFF5000" Grid.Column="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox VerticalAlignment="Center" IsEnabled="{Binding P3.Deselectable}" Content="" IsChecked="{Binding P4.IsActive}"  Height="16" HorizontalAlignment="Center"/>
+                <TextBox  VerticalAlignment="Center" BorderThickness="0" Grid.Column="1" Padding="5" FontSize="16" FontWeight="Bold" Background="Transparent" Text="{Binding P4.Name}"/>
+            </Grid>
+            <Grid Grid.Row="1" Background="#FF52BDF1" Grid.Column="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox VerticalAlignment="Center" IsEnabled="{Binding P3.Deselectable}" Content="" IsChecked="{Binding P5.IsActive}" Height="16" HorizontalAlignment="Center"/>
+                <TextBox  VerticalAlignment="Center" BorderThickness="0" Grid.Column="1" Padding="5" FontSize="16" FontWeight="Bold" Background="Transparent" Text="{Binding P5.Name}"/>
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="25*"/>
+            </Grid.ColumnDefinitions>
+            <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" Width="5" />
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="121*"/>
+                    <RowDefinition Height="121*"/>
+
+                    <RowDefinition Height="44*"/>
+                    <RowDefinition Height="39*"/>
+                    <RowDefinition Height="43*"/>
+                    <RowDefinition Height="70*"/>
+
+                    <RowDefinition Height="46*"/>
+                    <RowDefinition Height="45*"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="103*"/>
+                    <ColumnDefinition Width="588*"/>
+                    <ColumnDefinition Width="13*"/>
+
+
+                </Grid.ColumnDefinitions>
+                <Label HorizontalAlignment="Right" HorizontalContentAlignment="Right"  Margin="0,10,10,10" Width="31" Grid.Row="1">Text</Label>
+                <TextBox Grid.Column="1" BorderThickness="1" Margin="10" Text="{Binding CurrentQuestion.Text, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"></TextBox>
+                <Label Grid.Row="2" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,10,10,10" Width="56">Antwort</Label>
+                <TextBox Grid.Row="2" Grid.Column="1" Margin="10" BorderThickness="1" Text="{Binding CurrentQuestion.Answer, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <Label Grid.Row="3" Margin="0,10,10,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Right" Width="31">Link</Label>
+                <TextBox  Grid.Row="3" Grid.Column="1"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.Link, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+                <Label Grid.Row="5" Margin="0,10,10,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Right">Bild</Label>
+                <TextBox  Grid.Row="5" Grid.Column="1"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.ImagePath, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+                <Grid Grid.Row="4" Grid.Column="1" Margin="10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="260*"/>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="60*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="1"  VerticalAlignment="Top" Margin="5" Click="WebPlayClick">Play (SB)</Button>
+                    <Button Grid.Column="2" VerticalAlignment="Top" Margin="5" Click="WebPlayClickLocal">Play (C)</Button>
+                    <Button Grid.Column="3"  VerticalAlignment="Top" Margin="5" Click="WebPlayStopClick">Stop</Button>
+                </Grid>
+                <Label Grid.Row="7"  Margin="0,0,10,0" HorizontalAlignment="Right" FontSize="20" FontWeight="Bold" Foreground="Green">+</Label>
+                <Label Grid.Row="8"  Margin="0,0,13,0" HorizontalAlignment="Right" FontSize="20" FontWeight="Bold" Foreground="Red" RenderTransformOrigin="0.111,0">-</Label>
+                <Grid Grid.Row="7" Grid.Column="1" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+
+
+                    </Grid.ColumnDefinitions>
+
+                    <Button VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P1.Name}" Tag="{Binding P1}" Height ="30" Background="#FFFF5555" Click="Answer_Plus_Click"/>
+                    <Button Grid.Column="1" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P2.Name}" Tag="{Binding P2}" Height ="30" Background="#FFFFFF00" Click="Answer_Plus_Click"/>
+                    <Button Grid.Column="2" IsEnabled="{Binding P3.IsActive}" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P3.Name}" Tag="{Binding P3}" Height ="30" Background="#FF5EFF66" Click="Answer_Plus_Click"/>
+                    <Button Grid.Column="3" IsEnabled="{Binding P4.IsActive}" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P4.Name}" Tag="{Binding P4}" Height ="30" Background="#FFFF5000" Click="Answer_Plus_Click"/>
+                    <Button Grid.Column="4" IsEnabled="{Binding P5.IsActive}" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P5.Name}" Tag="{Binding P5}" Height ="30" Background="#FF52BDF1" Click="Answer_Plus_Click"/>
+
+
+                </Grid>
+                <Grid Grid.Row="8" Grid.Column="1" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+
+
+                    </Grid.ColumnDefinitions>
+                    <Button VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P1.Name}" Tag="{Binding P1}" Height ="30" Background="#FFFF5555" Click="Answer_Minus_Click"/>
+                    <Button Grid.Column="1" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P2.Name}" Tag="{Binding P2}" Height ="30" Background="#FFFFFF00" Click="Answer_Minus_Click"/>
+                    <Button Grid.Column="2" IsEnabled="{Binding P3.IsActive}" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P3.Name}" Tag="{Binding P3}" Height ="30" Background="#FF5EFF66" Click="Answer_Minus_Click"/>
+                    <Button Grid.Column="3" IsEnabled="{Binding P4.IsActive}" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P4.Name}" Tag="{Binding P4}" Height ="30" Background="#FFFF5000" Click="Answer_Minus_Click"/>
+                    <Button Grid.Column="4" IsEnabled="{Binding P5.IsActive}" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P5.Name}" Tag="{Binding P5}" Height ="30" Background="#FF52BDF1" Click="Answer_Minus_Click"/>
+
+
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="6" Margin="10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="26*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="6*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="1" IsEnabled="{Binding PlaySBEnabled}" VerticalAlignment="Top" Margin="5"  Content="..." Click="ImageSearchClick" />
+                    <Button Grid.Column="2" IsEnabled="{Binding PlaySBEnabled}" VerticalAlignment="Top" Margin="5"  Content="Zeigen" Click="ImageShowClick" />
+                    <Button Grid.Column="3" IsEnabled="{Binding PlaySBEnabled}" VerticalAlignment="Top" Margin="5"  Content="Schließen" Click="ImageCloseClick" />
+                </Grid>
+
+            </Grid>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+
+                <TextBox Grid.Row="0" Padding="5" Text="Fragen" Background="LightGray" FontSize="16" FontWeight="Bold"/>
+
+                <ListBox x:Name="listbox" Grid.Row="1" SelectionChanged="ListBox_SelectionChanged">
+
+                    <ListBoxItem Background="#FFFF9000" Content ="{Binding Cat1.Q1.Description}" Tag="{Binding Cat1.Q1}" IsEnabled="{Binding Cat1.Q1.Closed}"/>
+                    <ListBoxItem Background="#FFFF8000" Content ="{Binding Cat1.Q2.Description}" Tag="{Binding Cat1.Q2}"/>
+                    <ListBoxItem Background="#FFFF7000" Content ="{Binding Cat1.Q3.Description}" Tag="{Binding Cat1.Q3}"/>
+                    <ListBoxItem Background="#FFFF6000" Content ="{Binding Cat1.Q4.Description}" Tag="{Binding Cat1.Q4}"/>
+                    <ListBoxItem Background="#FFFF5000" Content ="{Binding Cat1.Q5.Description}" Tag="{Binding Cat1.Q5}"/>
+
+                    <ListBoxItem Background="#FF98DDFF" Content ="{Binding Cat2.Q1.Description}" Tag="{Binding Cat2.Q1}"/>
+                    <ListBoxItem Background="#FF7ED3FD" Content ="{Binding Cat2.Q2.Description}" Tag="{Binding Cat2.Q2}"/>
+                    <ListBoxItem Background="#FF52BDF1" Content ="{Binding Cat2.Q3.Description}" Tag="{Binding Cat2.Q3}"/>
+                    <ListBoxItem Background="#FF2FBAFF" Content ="{Binding Cat2.Q4.Description}" Tag="{Binding Cat2.Q4}"/>
+                    <ListBoxItem Background="#FF00AAFF" Content ="{Binding Cat2.Q5.Description}" Tag="{Binding Cat2.Q5}"/>
+
+                    <ListBoxItem Background="#FFF98F8F" Content ="{Binding Cat3.Q1.Description}" Tag="{Binding Cat3.Q1}"/>
+                    <ListBoxItem Background="#FFFF7171" Content ="{Binding Cat3.Q2.Description}" Tag="{Binding Cat3.Q2}"/>
+                    <ListBoxItem Background="#FFFF5555" Content ="{Binding Cat3.Q3.Description}" Tag="{Binding Cat3.Q3}"/>
+                    <ListBoxItem Background="#FFF13838" Content ="{Binding Cat3.Q4.Description}" Tag="{Binding Cat3.Q4}"/>
+                    <ListBoxItem Background="#FFFF1B1B" Content ="{Binding Cat3.Q5.Description}" Tag="{Binding Cat3.Q5}"/>
+
+                    <ListBoxItem Background="#FFB7FFBB" Content ="{Binding Cat4.Q1.Description}" Tag="{Binding Cat4.Q1}"/>
+                    <ListBoxItem Background="#FF8AFF8F" Content ="{Binding Cat4.Q2.Description}" Tag="{Binding Cat4.Q2}"/>
+                    <ListBoxItem Background="#FF5EFF66" Content ="{Binding Cat4.Q3.Description}" Tag="{Binding Cat4.Q3}"/>
+                    <ListBoxItem Background="#FF22FF2D" Content ="{Binding Cat4.Q4.Description}" Tag="{Binding Cat4.Q4}"/>
+                    <ListBoxItem Background="#FF00FF0C" Content ="{Binding Cat4.Q5.Description}" Tag="{Binding Cat4.Q5}"/>
+
+                    <ListBoxItem Background="#FFFFFF9D" Content ="{Binding Cat5.Q1.Description}" Tag="{Binding Cat5.Q1}"/>
+                    <ListBoxItem Background="#FFFFFF7B" Content ="{Binding Cat5.Q2.Description}" Tag="{Binding Cat5.Q2}"/>
+                    <ListBoxItem Background="#FFFFFF5E" Content ="{Binding Cat5.Q3.Description}" Tag="{Binding Cat5.Q3}"/>
+                    <ListBoxItem Background="#FFFFFF2F" Content ="{Binding Cat5.Q4.Description}" Tag="{Binding Cat5.Q4}"/>
+                    <ListBoxItem Background="#FFFFFF00" Content ="{Binding Cat5.Q5.Description}" Tag="{Binding Cat5.Q5}"/>
+
+
+                </ListBox>
+
+            </Grid>
+
+
+        </Grid>
+
+    </Grid>
+</Window>
