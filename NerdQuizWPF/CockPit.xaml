@@ -93,17 +93,18 @@
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" Width="5" />
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="121*"/>
-                    <RowDefinition Height="121*"/>
+                    <RowDefinition Height="19*"/>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="115*"/>
+                    <RowDefinition Height="75*"/>
+
+                    <RowDefinition Height="42*"/>
+                    <RowDefinition Height="38*"/>
+                    <RowDefinition Height="42*"/>
+                    <RowDefinition Height="67*"/>
 
                     <RowDefinition Height="44*"/>
-                    <RowDefinition Height="39*"/>
                     <RowDefinition Height="43*"/>
-                    <RowDefinition Height="70*"/>
-
-                    <RowDefinition Height="46*"/>
-                    <RowDefinition Height="45*"/>
                     <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -113,15 +114,23 @@
 
 
                 </Grid.ColumnDefinitions>
-                <Label HorizontalAlignment="Right" HorizontalContentAlignment="Right"  Margin="0,10,10,10" Width="31" Grid.Row="1">Text</Label>
-                <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="1" Margin="10" Text="{Binding CurrentQuestion.Text, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1"></TextBox>
-                <Label Grid.Row="2" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,10,10,10" Width="56">Antwort</Label>
-                <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" Margin="10" BorderThickness="1" Text="{Binding CurrentQuestion.Answer, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                <Label Grid.Row="3" Margin="0,10,10,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Right" Width="31">Link</Label>
-                <TextBox  Grid.Row="3" Grid.Column="1"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.Link, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
-                <Label Grid.Row="5" Margin="0,10,10,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Right">Bild</Label>
-                <TextBox  Grid.Row="5" Grid.Column="1"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.ImagePath, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
-                <Grid Grid.Row="4" Grid.Column="1" Margin="10,0">
+                <Grid Grid.Row="1" Grid.Column="1" Margin="10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="340*"/>
+                        <ColumnDefinition Width="100*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="1" Margin="5" VerticalAlignment="Top" Click="CloseQuestionClick" >Frage Schliessen</Button>
+                </Grid>
+                <Label HorizontalAlignment="Right" HorizontalContentAlignment="Right"  Margin="0,10,10,10" Width="31" Grid.Row="2" >Text</Label>
+                <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="1" Margin="10" Text="{Binding CurrentQuestion.Text, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" ></TextBox>
+                <Label Grid.Row="3" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,10,10,10" Width="56">Antwort</Label>
+                <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Row="3" Grid.Column="1" Margin="10" BorderThickness="1" Text="{Binding CurrentQuestion.Answer, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <Label Grid.Row="4" Margin="0,10,10,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Right" Width="31">Link</Label>
+                <TextBox  Grid.Row="4" Grid.Column="1"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.Link, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+                <Label Grid.Row="6" Margin="0,10,10,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Right">Bild</Label>
+                <TextBox  Grid.Row="6" Grid.Column="1"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.ImagePath, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+                <Grid Grid.Row="5" Grid.Column="1" Margin="10,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="260*"/>
                         <ColumnDefinition Width="60*"/>
@@ -132,9 +141,9 @@
                     <Button Grid.Column="2" VerticalAlignment="Top" Margin="5" Click="WebPlayClickLocal">Play (C)</Button>
                     <Button Grid.Column="3"  VerticalAlignment="Top" Margin="5" Click="WebPlayStopClick">Stop</Button>
                 </Grid>
-                <Label Grid.Row="7"  Margin="0,0,10,0" HorizontalAlignment="Right" FontSize="20" FontWeight="Bold" Foreground="Green">+</Label>
-                <Label Grid.Row="8"  Margin="0,0,13,0" HorizontalAlignment="Right" FontSize="20" FontWeight="Bold" Foreground="Red" RenderTransformOrigin="0.111,0">-</Label>
-                <Grid Grid.Row="7" Grid.Column="1" >
+                <Label Grid.Row="8"  Margin="0,0,10,0" HorizontalAlignment="Right" FontSize="20" FontWeight="Bold" Foreground="Green">+</Label>
+                <Label Grid.Row="9"  Margin="0,0,13,0" HorizontalAlignment="Right" FontSize="20" FontWeight="Bold" Foreground="Red" RenderTransformOrigin="0.111,0">-</Label>
+                <Grid Grid.Row="8" Grid.Column="1" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
@@ -153,7 +162,7 @@
 
 
                 </Grid>
-                <Grid Grid.Row="8" Grid.Column="1" >
+                <Grid Grid.Row="9" Grid.Column="1" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
@@ -171,12 +180,12 @@
 
 
                 </Grid>
-                <Grid Grid.Column="1" Grid.Row="6" Margin="10,0">
+                <Grid Grid.Column="1" Grid.Row="7" Margin="10,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="26*"/>
-                        <ColumnDefinition Width="6*"/>
-                        <ColumnDefinition Width="6*"/>
-                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="48*"/>
+                        <ColumnDefinition Width="11*"/>
+                        <ColumnDefinition Width="78"/>
+                        <ColumnDefinition Width="11*"/>
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="1" IsEnabled="{Binding PlaySBEnabled}" VerticalAlignment="Top" Margin="5"  Content="..." Click="ImageSearchClick" />
                     <Button Grid.Column="2" IsEnabled="{Binding PlaySBEnabled}" VerticalAlignment="Top" Margin="5"  Content="Zeigen" Click="ImageShowClick" />

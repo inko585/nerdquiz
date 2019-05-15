@@ -274,7 +274,12 @@ namespace NerdQuizWPF
 
         }
 
-
-
+        private void CloseQuestionClick(object sender, RoutedEventArgs e)
+        {
+            if (sb != null)
+            {
+                vm.CurrentQuestion.Open = false;
+            }
+        }
     }
 }
