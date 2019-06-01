@@ -145,6 +145,11 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
+                    "_4FEF34304A35954F5E63B8B908F9BAFC"
+                    {
+                    "Name" = "8:System.Net.Http.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -240,15 +245,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:NerdQuiz"
-        "ProductCode" = "8:{596EC877-5F04-450A-9312-7C600D89CF73}"
-        "PackageCode" = "8:{B8AB5F16-577B-48BD-95FA-CDB356E34038}"
+        "ProductCode" = "8:{5C6FDBFE-33F2-4668-B5B1-54005BAAA468}"
+        "PackageCode" = "8:{BCC7E9CB-0774-45BD-A950-9006D3B66CC4}"
         "UpgradeCode" = "8:{BB55303D-0907-4299-AA24-5DA6F40A1D16}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.0.2"
+        "ProductVersion" = "8:2.0.3"
         "Manufacturer" = "8:NerdQuiz"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

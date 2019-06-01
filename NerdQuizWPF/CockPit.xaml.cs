@@ -49,6 +49,7 @@ namespace NerdQuizWPF
             {
                 if (vm.CurrentQuestion.Link != "")
                 {
+                    wb = new WebBrowser();
                     wb.Navigate(vm.CurrentQuestion.Link);
                     wb.Show();
                     WindowExt.MaximizeToSpecificMonitor(wb, vm.ScoreBoardScreen);
@@ -254,6 +255,7 @@ namespace NerdQuizWPF
             {
                 if (vm.CurrentQuestion.Link != "")
                 {
+                    wb = new WebBrowser();
                     wb.Navigate(vm.CurrentQuestion.Link);
                     wb.Show();
                     wb.MaximizeToSpecificMonitor(GetScreenFrom(this), maximized: false);
