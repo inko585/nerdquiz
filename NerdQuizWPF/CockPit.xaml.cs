@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.Office.Core;
+using Microsoft.Office.Interop.PowerPoint;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -78,8 +81,10 @@ namespace NerdQuizWPF
         private void RunClick(object sender, RoutedEventArgs e)
         {
             var dia = new ScreenSelection();
+            
             if (dia.ShowDialog() == true)
             {
+                Registry.SetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\PowerPoint\Options", "DisplayMonitor", vm.ScoreBoardScreen);
                 sb = new ScoreBoard();
                 sb.Show();
                 WindowExt.MaximizeToSpecificMonitor(sb, vm.ScoreBoardScreen);
@@ -167,7 +172,7 @@ namespace NerdQuizWPF
         {
             base.OnClosed(e);
 
-            Application.Current.Shutdown();
+            System.Windows.Application.Current.Shutdown();
         }
 
         private void CloseGameClick(object sender, RoutedEventArgs e)
@@ -223,6 +228,38 @@ namespace NerdQuizWPF
                 vm.CurrentQuestion.ImagePath = dialog.FileName;
             }
 
+        }
+
+        private void PPSearchClick(object sender, RoutedEventArgs e)
+        {
+
+            var dialog = new System.Windows.Forms.OpenFileDialog();
+            dialog.Filter = "PowerPoint Dateien|*.pptx";
+            dialog.InitialDirectory = @"C:\";
+            dialog.Title = "Präsentation wählen";
+
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                vm.CurrentQuestion.PptxPath = dialog.FileName;
+            }
+
+        }
+
+        private void PPOpenClick(object sender, RoutedEventArgs e)
+        {
+            var ppApp = new Microsoft.Office.Interop.PowerPoint.Application();
+            ppApp.Visible = MsoTriState.msoTrue;
+            var ppPresens = ppApp.Presentations;
+            var objPres = ppPresens.Open(vm.CurrentQuestion.PptxPath, MsoTriState.msoFalse, MsoTriState.msoTrue, MsoTriState.msoTrue);
+            objPres.SlideShowSettings.Run();
+
+            while (ppApp.SlideShowWindows.Count >= 1)
+            {
+                System.Threading.Thread.Sleep(100);
+            }
+
+            objPres.Close();
+            ppApp.Quit();
         }
 
         private void ImageCloseClick(object sender, RoutedEventArgs e)

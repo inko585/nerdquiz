@@ -403,6 +403,13 @@ namespace NerdQuizWPF
             set { imagePath = value; NotifyPropertyChanged("ImagePath"); }
         }
 
+        private string ppPath;
+        public string PptxPath
+        {
+            get { return ppPath; }
+            set { ppPath = value; NotifyPropertyChanged("PptxPath"); }
+        }
+
 
         private bool open = true;
         [XmlIgnore]
