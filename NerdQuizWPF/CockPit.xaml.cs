@@ -84,7 +84,10 @@ namespace NerdQuizWPF
 
             if (dia.ShowDialog() == true)
             {
-                Registry.SetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\PowerPoint\Options", "DisplayMonitor", vm.ScoreBoardScreen);
+                if (vm.PowerPointVersion != null)
+                {
+                    Registry.SetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Office\" + vm.PowerPointVersion + @"\PowerPoint\Options", "DisplayMonitor", vm.ScoreBoardScreen);
+                }
                 sb = new ScoreBoard();
                 sb.Show();
                 WindowExt.MaximizeToSpecificMonitor(sb, vm.ScoreBoardScreen);
@@ -218,11 +221,12 @@ namespace NerdQuizWPF
                     iv.Show();
                     WindowExt.MaximizeToSpecificMonitor(iv, vm.ScoreBoardScreen);
                 }
-                catch 
+                catch
                 {
                     MessageBox.Show("Kein gültiges Bild Format!");
                 }
-            } else if (!string.IsNullOrWhiteSpace(vm.CurrentQuestion.ImagePath))
+            }
+            else if (!string.IsNullOrWhiteSpace(vm.CurrentQuestion.ImagePath))
             {
                 MessageBox.Show("Datei existiert nicht!");
             }
@@ -260,31 +264,31 @@ namespace NerdQuizWPF
 
         private void PPOpenClick(object sender, RoutedEventArgs e)
         {
-            if (File.Exists(vm.CurrentQuestion.PptxPath))
+            if (vm.PowerPointVersion != null)
             {
-                if (vm.CurrentQuestion.PptxPath.EndsWith(".pptx"))
+                if (File.Exists(vm.CurrentQuestion.PptxPath))
                 {
-                    var ppApp = new Microsoft.Office.Interop.PowerPoint.Application();
-                    ppApp.Visible = MsoTriState.msoTrue;
-                    var ppPresens = ppApp.Presentations;
-                    var objPres = ppPresens.Open(vm.CurrentQuestion.PptxPath, MsoTriState.msoFalse, MsoTriState.msoTrue, MsoTriState.msoTrue);
-                    objPres.SlideShowSettings.Run();
-
-                    while (ppApp.SlideShowWindows.Count >= 1)
+                    if (vm.CurrentQuestion.PptxPath.EndsWith(".pptx"))
                     {
-                        System.Threading.Thread.Sleep(100);
-                    }
+                        var ppApp = new Microsoft.Office.Interop.PowerPoint.Application();
+                        ppApp.Visible = MsoTriState.msoTrue;
+                        var ppPresens = ppApp.Presentations;
+                        var objPres = ppPresens.Open(vm.CurrentQuestion.PptxPath, MsoTriState.msoFalse, MsoTriState.msoTrue, MsoTriState.msoTrue);
+                        objPres.SlideShowSettings.Run();
 
-                    objPres.Close();
-                    ppApp.Quit();
-                } else
-                {
-                    MessageBox.Show("Keine gültige pptx Datei!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Keine gültige pptx Datei!");
+                    }
                 }
-            }
-            else if (!string.IsNullOrWhiteSpace(vm.CurrentQuestion.PptxPath))
+                else if (!string.IsNullOrWhiteSpace(vm.CurrentQuestion.PptxPath))
+                {
+                    MessageBox.Show("Datei existiert nicht!");
+                }
+            } else
             {
-                MessageBox.Show("Datei existiert nicht!");
+                MessageBox.Show("Keine PowerPoint Installation gefunden");
             }
         }
 

@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Win32;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
@@ -82,7 +84,32 @@ namespace NerdQuizWPF
             AddDefaultPlayers();
 
             CurrentQuestion = Cat1.Q1;
+
+
+
+            PowerPointVersion = null;
+
+            var powerPointVersions = new string[] { "16.0", "15.0", "14.0", "12.0", "11.0", "10.0" };
+           
+            foreach (var ppv in powerPointVersions)
+            {
+                if (CheckPowerPointVersion(ppv))
+                {
+                    PowerPointVersion = ppv;
+                    break;
+                }
+            }
+
         }
+
+        private bool CheckPowerPointVersion(string version)
+        {
+            var key = @"Software\Microsoft\Office\" + version + @"\PowerPoint\Options";
+
+            return Registry.CurrentUser.OpenSubKey(key) != null;
+        }
+
+        public string PowerPointVersion { get; set; }
 
         private void AddDefaultPlayers()
         {
