@@ -81,7 +81,7 @@ namespace NerdQuizWPF
         private void RunClick(object sender, RoutedEventArgs e)
         {
             var dia = new ScreenSelection();
-            
+
             if (dia.ShowDialog() == true)
             {
                 Registry.SetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\PowerPoint\Options", "DisplayMonitor", vm.ScoreBoardScreen);
@@ -208,11 +208,24 @@ namespace NerdQuizWPF
 
         private void ImageShowClick(object sender, RoutedEventArgs e)
         {
-            var uri = new Uri("file://" + vm.CurrentQuestion.ImagePath);
-            var bitmap = new BitmapImage(uri);
-            iv.Image.Source = bitmap;
-            iv.Show();
-            WindowExt.MaximizeToSpecificMonitor(iv, vm.ScoreBoardScreen);
+            if (File.Exists(vm.CurrentQuestion.ImagePath))
+            {
+                var uri = new Uri("file://" + vm.CurrentQuestion.ImagePath);
+                try
+                {
+                    var bitmap = new BitmapImage(uri);
+                    iv.Image.Source = bitmap;
+                    iv.Show();
+                    WindowExt.MaximizeToSpecificMonitor(iv, vm.ScoreBoardScreen);
+                }
+                catch 
+                {
+                    MessageBox.Show("Kein gültiges Bild Format!");
+                }
+            } else if (!string.IsNullOrWhiteSpace(vm.CurrentQuestion.ImagePath))
+            {
+                MessageBox.Show("Datei existiert nicht!");
+            }
         }
 
         private void ImageSearchClick(object sender, RoutedEventArgs e)
@@ -247,19 +260,32 @@ namespace NerdQuizWPF
 
         private void PPOpenClick(object sender, RoutedEventArgs e)
         {
-            var ppApp = new Microsoft.Office.Interop.PowerPoint.Application();
-            ppApp.Visible = MsoTriState.msoTrue;
-            var ppPresens = ppApp.Presentations;
-            var objPres = ppPresens.Open(vm.CurrentQuestion.PptxPath, MsoTriState.msoFalse, MsoTriState.msoTrue, MsoTriState.msoTrue);
-            objPres.SlideShowSettings.Run();
-
-            while (ppApp.SlideShowWindows.Count >= 1)
+            if (File.Exists(vm.CurrentQuestion.PptxPath))
             {
-                System.Threading.Thread.Sleep(100);
-            }
+                if (vm.CurrentQuestion.PptxPath.EndsWith(".pptx"))
+                {
+                    var ppApp = new Microsoft.Office.Interop.PowerPoint.Application();
+                    ppApp.Visible = MsoTriState.msoTrue;
+                    var ppPresens = ppApp.Presentations;
+                    var objPres = ppPresens.Open(vm.CurrentQuestion.PptxPath, MsoTriState.msoFalse, MsoTriState.msoTrue, MsoTriState.msoTrue);
+                    objPres.SlideShowSettings.Run();
 
-            objPres.Close();
-            ppApp.Quit();
+                    while (ppApp.SlideShowWindows.Count >= 1)
+                    {
+                        System.Threading.Thread.Sleep(100);
+                    }
+
+                    objPres.Close();
+                    ppApp.Quit();
+                } else
+                {
+                    MessageBox.Show("Keine gültige pptx Datei!");
+                }
+            }
+            else if (!string.IsNullOrWhiteSpace(vm.CurrentQuestion.PptxPath))
+            {
+                MessageBox.Show("Datei existiert nicht!");
+            }
         }
 
         private void ImageCloseClick(object sender, RoutedEventArgs e)
