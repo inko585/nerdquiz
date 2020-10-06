@@ -126,9 +126,9 @@
                     <Button Grid.Column="1" Margin="5" VerticalAlignment="Top" Click="CloseQuestionClick" >Frage Schliessen</Button>
                 </Grid>
                 <Label HorizontalAlignment="Right" HorizontalContentAlignment="Right"  Margin="0,10,10,10" Width="31" Grid.Row="2" >Text</Label>
-                <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="1" Margin="10" Text="{Binding CurrentQuestion.Text, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" ></TextBox>
+                <TextBox SpellCheck.IsEnabled="True" AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="1" Margin="10" Text="{Binding CurrentQuestion.Text, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" ></TextBox>
                 <Label Grid.Row="3" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,10,10,10" Width="56">Antwort</Label>
-                <TextBox AcceptsReturn="True" TextWrapping="Wrap" Grid.Row="3" Grid.Column="1" Margin="10" BorderThickness="1" Text="{Binding CurrentQuestion.Answer, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox SpellCheck.IsEnabled="True" TextWrapping="Wrap" Grid.Row="3" Grid.Column="1" Margin="10" BorderThickness="1" Text="{Binding CurrentQuestion.Answer, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                 <Label Grid.Row="4" Margin="0,10,10,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Right" Width="31">Link</Label>
                 <TextBox  Grid.Row="4" Grid.Column="1"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.Link, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
                 <Label Grid.Row="6" Margin="0,10,10,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Right">Bild</Label>
