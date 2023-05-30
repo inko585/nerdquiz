@@ -90,7 +90,7 @@ namespace NerdQuizWPF
             PowerPointVersion = null;
 
             var powerPointVersions = new string[] { "16.0", "15.0", "14.0", "12.0", "11.0", "10.0" };
-           
+
             foreach (var ppv in powerPointVersions)
             {
                 if (CheckPowerPointVersion(ppv))
@@ -336,7 +336,8 @@ namespace NerdQuizWPF
         public Question(int points, Category cat)
         {
             Text = "";
-            Link = "";
+            YouTubeStart = "";
+            YouTubeId = "";
             Points = points;
             CategoryText = cat.Text;
             Description = CategoryText + " " + Points;
@@ -409,17 +410,28 @@ namespace NerdQuizWPF
         }
 
         public string Answer { get; set; }
-        private string link;
+
+        [XmlIgnore]
         public string Link
         {
             get
             {
-                return link;
+                return "https://www.youtube.com/watch_popup?v=" + YouTubeId + "&autoplay=1" + (int.TryParse(YouTubeStart, out _) ? "&start="  + YouTubeStart : "");
             }
-            set
-            {
-                link = value;
-            }
+        }
+
+        private string youtubeId;
+        public string YouTubeId
+        {
+            get { return youtubeId; }
+            set { youtubeId = value; NotifyPropertyChanged(nameof(YouTubeId)); }
+        }
+
+        private string youtubeStart;
+        public string YouTubeStart
+        {
+            get { return youtubeStart; }
+            set { youtubeStart = value; NotifyPropertyChanged(nameof(YouTubeStart)); }
         }
 
         private string imagePath;

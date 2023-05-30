@@ -129,11 +129,21 @@
                 <TextBox SpellCheck.IsEnabled="True" AcceptsReturn="True" TextWrapping="Wrap" Grid.Column="1" BorderThickness="1" Margin="10" Text="{Binding CurrentQuestion.Text, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" ></TextBox>
                 <Label Grid.Row="3" HorizontalAlignment="Right" HorizontalContentAlignment="Right" Margin="0,10,10,10" Width="56">Antwort</Label>
                 <TextBox SpellCheck.IsEnabled="True" TextWrapping="Wrap" Grid.Row="3" Grid.Column="1" Margin="10" BorderThickness="1" Text="{Binding CurrentQuestion.Answer, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                <Label Grid.Row="4" Margin="0,10,10,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Right" Width="31">Link</Label>
-                <TextBox  Grid.Row="4" Grid.Column="1"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.Link, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
-                <Label Grid.Row="6" Margin="0,10,10,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Right">Bild</Label>
+                <Label Grid.Row="4" Margin="0,5,0,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Center" Width="84" >YouTube Id</Label>
+                <Grid Grid.Row="4" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox  Grid.Column="0"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.YouTubeId, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+                    <Label Grid.Column="1"  Margin="0,5,0,0" HorizontalAlignment="Right">Start (Sekunden)</Label>
+                    <TextBox  Grid.Column="2"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.YouTubeStart, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+                </Grid>
+                
+                <Label Grid.Row="6" Margin="0,5,10,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Right">Bild</Label>
                 <TextBox  Grid.Row="6" Grid.Column="1"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.ImagePath, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
-                <Label Grid.Row="8" Margin="0,10,10,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Right" Content="PPTX"/>
+                <Label Grid.Row="8" Margin="0,5,10,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Right" Content="PPTX"/>
                 <TextBox  Grid.Row="8" Grid.Column="1"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.PptxPath, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
                 <Grid Grid.Row="5" Grid.Column="1" Margin="10,0">
                     <Grid.ColumnDefinitions>
