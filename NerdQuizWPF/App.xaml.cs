@@ -22,6 +22,8 @@ namespace NerdQuizWPF
             CurrentViewModel = new NerdQuizViewModel();
             AppDomain.CurrentDomain.ProcessExit += OnExit;
         }
+
+
         public static NerdQuizViewModel CurrentViewModel { get; set; }
 
         public static void OnExit(object sender, EventArgs e)

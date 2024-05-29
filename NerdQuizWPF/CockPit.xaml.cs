@@ -32,8 +32,26 @@ namespace NerdQuizWPF
         public CockPit()
         {
             InitializeComponent();
-            DataContext = App.CurrentViewModel;
-            vm = App.CurrentViewModel;
+            string[] args = Environment.GetCommandLineArgs();
+            if (args.Length == 2)
+            {
+                try
+                {
+                    LoadSaveFile(args[1]);
+                }
+                catch (Exception)
+                {
+                    DataContext = App.CurrentViewModel;
+                    vm = App.CurrentViewModel;
+                }
+            }
+            else
+            {
+                DataContext = App.CurrentViewModel;
+                vm = App.CurrentViewModel;
+            }
+
+
             listbox.SelectedItem = listbox.Items[0];
         }
 
@@ -114,34 +132,7 @@ namespace NerdQuizWPF
                             sb = null;
                         }
 
-                        Directory.Delete(App.SessionPath, true);
-
-                        ZipFile.ExtractToDirectory(dialog.FileName, App.SessionPath);
-
-                        var serializer = new XmlSerializer(typeof(NerdQuizViewModel));
-                        using (var sr = new StreamReader(App.QuizPath))
-                        {
-                            vm = (NerdQuizViewModel)serializer.Deserialize(sr);
-                            vm.P1 = App.CurrentViewModel.P1;
-                            vm.P2 = App.CurrentViewModel.P2;
-                            vm.P3 = App.CurrentViewModel.P3;
-                            vm.P4 = App.CurrentViewModel.P4;
-                            vm.P5 = App.CurrentViewModel.P5;
-                            foreach (var cat in vm.Categories)
-                            {
-                                foreach (var q in cat.Questions)
-                                {
-                                    q.CategoryText = cat.Text;
-                                }
-                            }
-                            vm.CurrentQuestion = vm.Cat1.Q1;
-                            App.CurrentViewModel = vm;
-                            DataContext = vm;
-
-
-
-
-                        }
+                        LoadSaveFile(dialog.FileName);
                     }
                 }
             }
@@ -152,7 +143,37 @@ namespace NerdQuizWPF
 
         }
 
+        public void LoadSaveFile(string path)
+        {
+            Directory.Delete(App.SessionPath, true);
 
+            ZipFile.ExtractToDirectory(path, App.SessionPath);
+
+            var serializer = new XmlSerializer(typeof(NerdQuizViewModel));
+            using (var sr = new StreamReader(App.QuizPath))
+            {
+                vm = (NerdQuizViewModel)serializer.Deserialize(sr);
+                vm.P1 = App.CurrentViewModel.P1;
+                vm.P2 = App.CurrentViewModel.P2;
+                vm.P3 = App.CurrentViewModel.P3;
+                vm.P4 = App.CurrentViewModel.P4;
+                vm.P5 = App.CurrentViewModel.P5;
+                foreach (var cat in vm.Categories)
+                {
+                    foreach (var q in cat.Questions)
+                    {
+                        q.CategoryText = cat.Text;
+                    }
+                }
+                vm.CurrentQuestion = vm.Cat1.Q1;
+                App.CurrentViewModel = vm;
+                DataContext = vm;
+
+
+
+
+            }
+        }
 
         private void Answer_Plus_Click(object sender, RoutedEventArgs e)
         {
@@ -253,7 +274,7 @@ namespace NerdQuizWPF
                 {
                     File.Copy(dialog.FileName, vm.CurrentQuestion.ImageSavePath);
                 }
-                
+
             }
 
         }
@@ -333,10 +354,10 @@ namespace NerdQuizWPF
                 ZipFile.CreateFromDirectory(App.SessionPath, dialog.FileName);
 
                 App.CurrentViewModel.Status = DateTime.Now.ToString() + " Gespeichert: " + dialog.FileName;
-               
+
             }
 
-            
+
 
         }
 
