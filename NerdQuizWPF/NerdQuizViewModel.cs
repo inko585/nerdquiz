@@ -1,7 +1,10 @@
 ﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml.Serialization;
@@ -11,7 +14,8 @@ namespace NerdQuizWPF
     public class NerdQuizViewModel : INotifyPropertyChanged
     {
 
-        // ---------- INotifyPropertyChanged Interface ----------
+
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
         {
@@ -34,6 +38,8 @@ namespace NerdQuizWPF
             }
         }
 
+
+
         [XmlIgnore]
         public Screen[] Screens
         {
@@ -46,14 +52,6 @@ namespace NerdQuizWPF
         [XmlIgnore]
         public Screen ScoreBoardScreen { get; set; }
 
-        //public ObservableCollection<Screen> Screens
-        //{
-        //    get
-        //    {
-        //        var screens = new ObservableCollection<Screen>();
-        //        return  { }
-        //    }
-        //}
 
         [XmlIgnore]
         public List<Category> Categories
@@ -122,6 +120,17 @@ namespace NerdQuizWPF
             P5 = new Player("Player5");
         }
 
+        private string status;
+        [XmlIgnore]
+        public string Status
+        {
+          get { return status; } set
+            {
+                status = value;
+                NotifyPropertyChanged(nameof(Status));
+            }
+        }
+
         private Question cq;
 
         [XmlIgnore]
@@ -162,7 +171,6 @@ namespace NerdQuizWPF
 
     public class Player : INotifyPropertyChanged
     {
-        // ---------- INotifyPropertyChanged Interface ----------
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
         {
@@ -249,7 +257,7 @@ namespace NerdQuizWPF
 
     public class Category : INotifyPropertyChanged
     {
-        // ---------- INotifyPropertyChanged Interface ----------
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
         {
@@ -322,7 +330,7 @@ namespace NerdQuizWPF
 
     public class Question : INotifyPropertyChanged
     {
-        // ---------- INotifyPropertyChanged Interface ----------
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
         {
@@ -416,7 +424,7 @@ namespace NerdQuizWPF
         {
             get
             {
-                return "https://www.youtube.com/watch_popup?v=" + YouTubeId + "&autoplay=1" + (int.TryParse(YouTubeStart, out _) ? "&start="  + YouTubeStart : "");
+                return "https://www.youtube.com/watch_popup?v=" + YouTubeId + "&autoplay=1" + (int.TryParse(YouTubeStart, out _) ? "&start=" + YouTubeStart : "");
             }
         }
 
@@ -434,21 +442,27 @@ namespace NerdQuizWPF
             set { youtubeStart = value; NotifyPropertyChanged(nameof(YouTubeStart)); }
         }
 
-        private string imagePath;
 
-        public string ImagePath
+        private string imagName;
+
+        public string ImageName
         {
-            get { return imagePath; }
-            set { imagePath = value; NotifyPropertyChanged("ImagePath"); }
+            get { return imagName; }
+            set { imagName = value; NotifyPropertyChanged("ImageName"); }
         }
 
-        private string ppPath;
-        public string PptxPath
+        [XmlIgnore]
+        public string ImageSavePath => App.ImagePath + "/" + ImageName;
+
+        private string pptxName;
+        public string PptxName
         {
-            get { return ppPath; }
-            set { ppPath = value; NotifyPropertyChanged("PptxPath"); }
+            get { return pptxName; }
+            set { pptxName = value; NotifyPropertyChanged(nameof(PptxName)); }
         }
 
+        [XmlIgnore]
+        public string PPTXSavePath => App.PPTXPath + "/" + PptxName;
 
         private bool open = true;
         [XmlIgnore]

@@ -12,6 +12,7 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="80"/>
             <RowDefinition />
+            <RowDefinition Height="24"/>
 
         </Grid.RowDefinitions>
         <Menu>
@@ -141,10 +142,11 @@
                     <TextBox  Grid.Column="2"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.YouTubeStart, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
                 </Grid>
                 
+                
                 <Label Grid.Row="6" Margin="0,5,10,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Right">Bild</Label>
-                <TextBox  Grid.Row="6" Grid.Column="1"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.ImagePath, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+                <TextBox  Grid.Row="6" Grid.Column="1"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.ImageName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"></TextBox>
                 <Label Grid.Row="8" Margin="0,5,10,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Right" Content="PPTX"/>
-                <TextBox  Grid.Row="8" Grid.Column="1"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.PptxPath, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+                <TextBox  Grid.Row="8" Grid.Column="1"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.PptxName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"></TextBox>
                 <Grid Grid.Row="5" Grid.Column="1" Margin="10,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="260*"/>
@@ -268,6 +270,10 @@
 
 
         </Grid>
+
+        <StatusBarItem Grid.Row="3" Grid.Column="1" Background="#F0F0F0">
+            <TextBlock Text="{Binding Status}" Margin="5,0"/>
+        </StatusBarItem>
 
     </Grid>
 </Window>

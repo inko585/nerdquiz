@@ -4,6 +4,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -102,9 +103,8 @@ namespace NerdQuizWPF
                 if (sb == null || MessageBox.Show("Dadurch wird aktuelle Runde beendet, sicher?", "Achtung", MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK)
                 {
                     var dialog = new System.Windows.Forms.OpenFileDialog();
-                    dialog.Filter = "xml Dateien|*.xml";
-                    dialog.InitialDirectory = @"C:\";
-                    dialog.Title = "XML wählen";
+                    dialog.Filter = "nq Dateien|*.nq";
+                    dialog.Title = "Datei wählen";
 
                     if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
@@ -114,8 +114,12 @@ namespace NerdQuizWPF
                             sb = null;
                         }
 
+                        Directory.Delete(App.SessionPath, true);
+
+                        ZipFile.ExtractToDirectory(dialog.FileName, App.SessionPath);
+
                         var serializer = new XmlSerializer(typeof(NerdQuizViewModel));
-                        using (var sr = new StreamReader(dialog.FileName))
+                        using (var sr = new StreamReader(App.QuizPath))
                         {
                             vm = (NerdQuizViewModel)serializer.Deserialize(sr);
                             vm.P1 = App.CurrentViewModel.P1;
@@ -133,6 +137,9 @@ namespace NerdQuizWPF
                             vm.CurrentQuestion = vm.Cat1.Q1;
                             App.CurrentViewModel = vm;
                             DataContext = vm;
+
+
+
 
                         }
                     }
@@ -211,9 +218,9 @@ namespace NerdQuizWPF
 
         private void ImageShowClick(object sender, RoutedEventArgs e)
         {
-            if (File.Exists(vm.CurrentQuestion.ImagePath))
+            if (File.Exists(vm.CurrentQuestion.ImageSavePath))
             {
-                var uri = new Uri("file://" + vm.CurrentQuestion.ImagePath);
+                var uri = new Uri("file://" + vm.CurrentQuestion.ImageSavePath);
                 try
                 {
                     var bitmap = new BitmapImage(uri);
@@ -226,7 +233,7 @@ namespace NerdQuizWPF
                     MessageBox.Show("Kein gültiges Bild Format!");
                 }
             }
-            else if (!string.IsNullOrWhiteSpace(vm.CurrentQuestion.ImagePath))
+            else if (!string.IsNullOrWhiteSpace(vm.CurrentQuestion.ImageSavePath))
             {
                 MessageBox.Show("Datei existiert nicht!");
             }
@@ -237,12 +244,16 @@ namespace NerdQuizWPF
 
             var dialog = new System.Windows.Forms.OpenFileDialog();
             dialog.Filter = "Bild Dateien|*.jpg;*.jpeg;*.png;";
-            dialog.InitialDirectory = @"C:\";
             dialog.Title = "Bild wählen";
 
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                vm.CurrentQuestion.ImagePath = dialog.FileName;
+                vm.CurrentQuestion.ImageName = System.IO.Path.GetFileName(dialog.FileName);
+                if (!File.Exists(vm.CurrentQuestion.ImageSavePath))
+                {
+                    File.Copy(dialog.FileName, vm.CurrentQuestion.ImageSavePath);
+                }
+                
             }
 
         }
@@ -252,12 +263,15 @@ namespace NerdQuizWPF
 
             var dialog = new System.Windows.Forms.OpenFileDialog();
             dialog.Filter = "PowerPoint Dateien|*.pptx";
-            dialog.InitialDirectory = @"C:\";
             dialog.Title = "Präsentation wählen";
 
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                vm.CurrentQuestion.PptxPath = dialog.FileName;
+                vm.CurrentQuestion.PptxName = System.IO.Path.GetFileName(dialog.FileName);
+                if (!File.Exists(vm.CurrentQuestion.PPTXSavePath))
+                {
+                    File.Copy(dialog.FileName, vm.CurrentQuestion.PPTXSavePath);
+                }
             }
 
         }
@@ -266,14 +280,14 @@ namespace NerdQuizWPF
         {
             if (vm.PowerPointVersion != null)
             {
-                if (File.Exists(vm.CurrentQuestion.PptxPath))
+                if (File.Exists(vm.CurrentQuestion.PPTXSavePath))
                 {
-                    if (vm.CurrentQuestion.PptxPath.EndsWith(".pptx"))
+                    if (vm.CurrentQuestion.PPTXSavePath.EndsWith(".pptx"))
                     {
                         var ppApp = new Microsoft.Office.Interop.PowerPoint.Application();
                         ppApp.Visible = MsoTriState.msoTrue;
                         var ppPresens = ppApp.Presentations;
-                        var objPres = ppPresens.Open(vm.CurrentQuestion.PptxPath, MsoTriState.msoFalse, MsoTriState.msoTrue, MsoTriState.msoTrue);
+                        var objPres = ppPresens.Open(vm.CurrentQuestion.PPTXSavePath, MsoTriState.msoFalse, MsoTriState.msoTrue, MsoTriState.msoTrue);
                         objPres.SlideShowSettings.Run();
 
                     }
@@ -282,11 +296,12 @@ namespace NerdQuizWPF
                         MessageBox.Show("Keine gültige pptx Datei!");
                     }
                 }
-                else if (!string.IsNullOrWhiteSpace(vm.CurrentQuestion.PptxPath))
+                else if (!string.IsNullOrWhiteSpace(vm.CurrentQuestion.PptxName))
                 {
                     MessageBox.Show("Datei existiert nicht!");
                 }
-            } else
+            }
+            else
             {
                 MessageBox.Show("Keine PowerPoint Installation gefunden");
             }
@@ -300,19 +315,28 @@ namespace NerdQuizWPF
         private void SaveClick(object sender, RoutedEventArgs e)
         {
             var dialog = new System.Windows.Forms.SaveFileDialog();
-            dialog.Filter = "xml Dateien|*.xml";
-            dialog.InitialDirectory = @"C:\";
+            dialog.Filter = "nq Dateien|*.nq;";
             dialog.Title = "Speicherort wählen";
 
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                using (var writer = new StreamWriter(dialog.FileName))
+                if (File.Exists(dialog.FileName))
+                {
+                    File.Delete(dialog.FileName);
+                }
+                using (var writer = new StreamWriter(App.QuizPath))
                 {
                     var serializer = new XmlSerializer(typeof(NerdQuizViewModel));
                     serializer.Serialize(writer, vm);
                 }
 
+                ZipFile.CreateFromDirectory(App.SessionPath, dialog.FileName);
+
+                App.CurrentViewModel.Status = DateTime.Now.ToString() + " Gespeichert: " + dialog.FileName;
+               
             }
+
+            
 
         }
 
