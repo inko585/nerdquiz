@@ -3,6 +3,8 @@ using Microsoft.Office.Interop.PowerPoint;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -65,13 +67,61 @@ namespace NerdQuizWPF
             vm.CurrentQuestion = q;
         }
 
+        private BitmapImage Pixelate(int pixelSize, string original)
+        {
+
+
+            var bitmapSource = new Bitmap(original);
+            var width = bitmapSource.Width;
+            var height = bitmapSource.Height;
+
+            var pixelated = new Bitmap(width, height);
+            using (Graphics graphics = Graphics.FromImage(pixelated))
+            {
+                for (int y = 0; y < height; y += pixelSize)
+                {
+                    for (int x = 0; x < width; x += pixelSize)
+                    {
+                        int offsetX = Math.Min(pixelSize, width - x);
+                        int offsetY = Math.Min(pixelSize, height - y);
+
+                        var pixelColor = bitmapSource.GetPixel(x, y);
+
+                        graphics.FillRectangle(new SolidBrush(pixelColor), x, y, offsetX, offsetY);
+                    }
+                }
+            }
+
+            return ToBitmapImage(pixelated);
+        }
+
+        public static BitmapImage ToBitmapImage(Bitmap bitmap)
+        {
+            using (var memory = new MemoryStream())
+            {
+                bitmap.Save(memory, ImageFormat.Png);
+                memory.Position = 0;
+
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = memory;
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.EndInit();
+                bitmapImage.Freeze();
+
+                return bitmapImage;
+            }
+        }
+
         private void WebPlayClick(object sender, RoutedEventArgs e)
         {
             try
             {
                 if (vm.CurrentQuestion.Link != "")
                 {
-                    wb = new WebBrowser();
+                    //wb.BrowserCore.Navigate("about:blank");
+                    //wb.Hide();
+                    //wb = new WebBrowser();
                     wb.Navigate(vm.CurrentQuestion.Link);
                     wb.Show();
                     WindowExt.MaximizeToSpecificMonitor(wb, vm.ScoreBoardScreen);
@@ -245,9 +295,62 @@ namespace NerdQuizWPF
                 try
                 {
                     var bitmap = new BitmapImage(uri);
-                    iv.Image.Source = bitmap;
-                    iv.Show();
-                    WindowExt.MaximizeToSpecificMonitor(iv, vm.ScoreBoardScreen);
+                    ShowImage(bitmap);
+                }
+                catch
+                {
+                    MessageBox.Show("Kein gültiges Bild Format!");
+                }
+            }
+            else if (!string.IsNullOrWhiteSpace(vm.CurrentQuestion.ImageSavePath))
+            {
+                MessageBox.Show("Datei existiert nicht!");
+            }
+        }
+
+        private void ShowImage(BitmapImage bitmap)
+        {
+            //iv.Hide();
+            iv.Image.Source = bitmap;
+            
+            iv.Show();
+            iv.Activate();
+            WindowExt.MaximizeToSpecificMonitor(iv, vm.ScoreBoardScreen);
+        }
+
+        private void Pixel5Click(object sender, RoutedEventArgs e)
+        {
+            PixelX(5);
+        }
+        private void Pixel4Click(object sender, RoutedEventArgs e)
+        {
+            PixelX(4);
+        }
+        private void Pixel3Click(object sender, RoutedEventArgs e)
+        {
+            PixelX(3);
+        }
+        private void Pixel2Click(object sender, RoutedEventArgs e)
+        {
+            PixelX(2);
+        }
+        private void Pixel1Click(object sender, RoutedEventArgs e)
+        {
+            PixelX(1);
+        }
+
+
+        private void PixelX(int x)
+        {
+
+            if (File.Exists(vm.CurrentQuestion.ImageSavePath))
+            {
+                var filePath = vm.CurrentQuestion.ImageSavePath;
+                
+                try
+                {                    
+                    var pixelImage = Pixelate(5 + x * 5, filePath);
+                    ShowImage(pixelImage);
                 }
                 catch
                 {

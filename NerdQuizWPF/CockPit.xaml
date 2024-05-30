@@ -104,8 +104,8 @@
                     <RowDefinition Height="70*"/>
 
                     <RowDefinition Height="55*"/>
-                    <RowDefinition Height="70*"/>
-                    <RowDefinition Height="55*"/>
+                    <!--<RowDefinition Height="70*"/>
+                    <RowDefinition Height="55*"/>-->
 
                     <RowDefinition Height="73*"/>
                     <RowDefinition Height="71*"/>
@@ -144,9 +144,17 @@
                 
                 
                 <Label Grid.Row="6" Margin="0,5,10,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Right">Bild</Label>
-                <TextBox  Grid.Row="6" Grid.Column="1"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.ImageName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"></TextBox>
-                <Label Grid.Row="8" Margin="0,5,10,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Right" Content="PPTX"/>
-                <TextBox  Grid.Row="8" Grid.Column="1"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.PptxName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"></TextBox>
+                <Grid Grid.Row="6"  Grid.Column="1"  VerticalAlignment="Top" Margin="10,10,10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Height="18" Text="{Binding CurrentQuestion.ImageName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"></TextBox>
+                    <Button Grid.Column="1" IsEnabled="{Binding PlaySBEnabled}" Width="60" VerticalAlignment="Top" Margin="5,0"  Content="..." Click="ImageSearchClick" />
+                </Grid>
+                
+                <!--<Label Grid.Row="8" Margin="0,5,10,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Right" Content="PPTX"/>
+                <TextBox  Grid.Row="8" Grid.Column="1"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.PptxName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"></TextBox>-->
                 <Grid Grid.Row="5" Grid.Column="1" Margin="10,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="260*"/>
@@ -158,9 +166,9 @@
                     <Button Grid.Column="2" VerticalAlignment="Top" Margin="5" Click="WebPlayClickLocal">Play (C)</Button>
                     <Button Grid.Column="3"  VerticalAlignment="Top" Margin="5" Click="WebPlayStopClick">Stop</Button>
                 </Grid>
-                <Label Grid.Row="10"  Margin="0,0,10,0" HorizontalAlignment="Right" FontSize="20" FontWeight="Bold" Foreground="Green">+</Label>
-                <Label Grid.Row="11"  Margin="0,0,13,0" HorizontalAlignment="Right" FontSize="20" FontWeight="Bold" Foreground="Red" RenderTransformOrigin="0.111,0">-</Label>
-                <Grid Grid.Row="10" Grid.Column="1" >
+                <Label Grid.Row="8"  Margin="0,0,10,0" HorizontalAlignment="Right" FontSize="20" FontWeight="Bold" Foreground="Green">+</Label>
+                <Label Grid.Row="9"  Margin="0,0,13,0" HorizontalAlignment="Right" FontSize="20" FontWeight="Bold" Foreground="Red" RenderTransformOrigin="0.111,0">-</Label>
+                <Grid Grid.Row="8" Grid.Column="1" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
@@ -179,7 +187,7 @@
 
 
                 </Grid>
-                <Grid Grid.Row="11" Grid.Column="1" >
+                <Grid Grid.Row="9" Grid.Column="1" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
@@ -200,16 +208,24 @@
                 <Grid Grid.Column="1" Grid.Row="7" Margin="10,0" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="48*"/>
-                        <ColumnDefinition Width="11*"/>
                         <ColumnDefinition Width="78"/>
-                        <ColumnDefinition Width="11*"/>
+                        <ColumnDefinition Width="78"/>
+                        <ColumnDefinition Width="78"/>
+                        <ColumnDefinition Width="78"/>
+                        <ColumnDefinition Width="78"/>
+                        <ColumnDefinition Width="78"/>
+                        <ColumnDefinition Width="78"/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="1" IsEnabled="{Binding PlaySBEnabled}" VerticalAlignment="Top" Margin="5"  Content="..." Click="ImageSearchClick" />
-                    <Button Grid.Column="2" IsEnabled="{Binding PlaySBEnabled}" VerticalAlignment="Top" Margin="5"  Content="Zeigen" Click="ImageShowClick" />
-                    <Button Grid.Column="3" IsEnabled="{Binding PlaySBEnabled}" VerticalAlignment="Top" Margin="5"  Content="Schließen" Click="ImageCloseClick" />
+                    <Button Grid.Column="1"  VerticalAlignment="Top" Margin="5"  Content="Pixel 5" Click="Pixel5Click" />
+                    <Button Grid.Column="2"  VerticalAlignment="Top" Margin="5"  Content="Pixel 4" Click="Pixel4Click" />
+                    <Button Grid.Column="3"  VerticalAlignment="Top" Margin="5"  Content="Pixel 3" Click="Pixel3Click" />
+                    <Button Grid.Column="4"  VerticalAlignment="Top" Margin="5"  Content="Pixel 2" Click="Pixel2Click" />
+                    <Button Grid.Column="5"  VerticalAlignment="Top" Margin="5"  Content="Pixel 1" Click="Pixel1Click" />
+                    <Button Grid.Column="6"  VerticalAlignment="Top" Margin="5"  Content="Zeigen" Click="ImageShowClick" />
+                    <Button Grid.Column="7"  VerticalAlignment="Top" Margin="5"  Content="Schließen" Click="ImageCloseClick" />
                 </Grid>
 
-                <Grid Grid.Column="1" Grid.Row="9" Margin="10,0" >
+                <!--<Grid Grid.Column="1" Grid.Row="9" Margin="10,0" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="419*"/>
                         <ColumnDefinition Width="78*"/>
@@ -219,7 +235,7 @@
                     <Button Grid.Column="1" IsEnabled="{Binding PlaySBEnabled}" VerticalAlignment="Top" Margin="5,5,5,0"  Content="..." Click="PPSearchClick" Height="20" />
                     <Button Grid.Column="2" IsEnabled="{Binding PlaySBEnabled}" VerticalAlignment="Top" Margin="5,5,5,0"  Content="Starten" Click="PPOpenClick" Height="20" />
 
-                </Grid>
+                </Grid>-->
 
             </Grid>
             <Grid >

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ImageViewer" Height="450" Width="800" WindowStartupLocation="Manual" Background="#FF959595"  WindowStyle="None">
     <Grid>
-        <Image x:Name="Image" Margin="0,0,-132,-84" />
+        <Image x:Name="Image" Margin="0,0,0,0" />
 
     </Grid>
 </Window>
