@@ -82,22 +82,6 @@ namespace NerdQuizWPF
             AddDefaultPlayers();
 
             CurrentQuestion = Cat1.Q1;
-
-
-
-            PowerPointVersion = null;
-
-            var powerPointVersions = new string[] { "16.0", "15.0", "14.0", "12.0", "11.0", "10.0" };
-
-            foreach (var ppv in powerPointVersions)
-            {
-                if (CheckPowerPointVersion(ppv))
-                {
-                    PowerPointVersion = ppv;
-                    break;
-                }
-            }
-
         }
 
         private bool CheckPowerPointVersion(string version)
@@ -106,8 +90,6 @@ namespace NerdQuizWPF
 
             return Registry.CurrentUser.OpenSubKey(key) != null;
         }
-
-        public string PowerPointVersion { get; set; }
 
         private void AddDefaultPlayers()
         {
@@ -461,8 +443,6 @@ namespace NerdQuizWPF
             set { pptxName = value; NotifyPropertyChanged(nameof(PptxName)); }
         }
 
-        [XmlIgnore]
-        public string PPTXSavePath => App.PPTXPath + "/" + PptxName;
 
         private bool open = true;
         [XmlIgnore]

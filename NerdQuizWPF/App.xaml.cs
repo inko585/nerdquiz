@@ -38,11 +38,8 @@ namespace NerdQuizWPF
             }
         }
 
-
-
         public static string SessionPath => Path.GetTempPath() + "/" + SessionKey;
         public static string ImagePath => Path.GetTempPath() + "/" + SessionKey + "/images";
-        public static string PPTXPath => Path.GetTempPath() + "/" + SessionKey + "/pptx";
         public static string QuizPath => Path.GetTempPath() + "/" + SessionKey + "/quiz.xml";
 
         private static string sessionKey;
@@ -55,7 +52,6 @@ namespace NerdQuizWPF
                     sessionKey = RandomString(10);
                     Directory.CreateDirectory(SessionPath);
                     Directory.CreateDirectory(ImagePath);
-                    Directory.CreateDirectory(PPTXPath);
                 }
                 return sessionKey;
             }

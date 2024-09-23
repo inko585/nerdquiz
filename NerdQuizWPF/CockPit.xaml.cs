@@ -67,6 +67,16 @@ namespace NerdQuizWPF
             vm.CurrentQuestion = q;
         }
 
+        public static BitmapImage BitmapFromUri(Uri source)
+        {
+            var bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = source;
+            bitmap.CacheOption = BitmapCacheOption.OnLoad;
+            bitmap.EndInit();
+            return bitmap;
+        }
+
         private BitmapImage Pixelate(int pixelSize, string original)
         {
 
@@ -119,9 +129,6 @@ namespace NerdQuizWPF
             {
                 if (vm.CurrentQuestion.Link != "")
                 {
-                    //wb.BrowserCore.Navigate("about:blank");
-                    //wb.Hide();
-                    //wb = new WebBrowser();
                     wb.Navigate(vm.CurrentQuestion.Link);
                     wb.Show();
                     WindowExt.MaximizeToSpecificMonitor(wb, vm.ScoreBoardScreen);
@@ -153,11 +160,9 @@ namespace NerdQuizWPF
 
             if (dia.ShowDialog() == true)
             {
-                if (vm.PowerPointVersion != null)
-                {
-                    Registry.SetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Office\" + vm.PowerPointVersion + @"\PowerPoint\Options", "DisplayMonitor", vm.ScoreBoardScreen);
-                }
                 sb = new ScoreBoard();
+                iv = new ImageViewer();
+                wb = new WebBrowser();
                 sb.Show();
                 WindowExt.MaximizeToSpecificMonitor(sb, vm.ScoreBoardScreen);
             }
@@ -294,7 +299,8 @@ namespace NerdQuizWPF
                 var uri = new Uri("file://" + vm.CurrentQuestion.ImageSavePath);
                 try
                 {
-                    var bitmap = new BitmapImage(uri);
+                    var bitmap = BitmapFromUri(uri);
+    
                     ShowImage(bitmap);
                 }
                 catch
@@ -310,9 +316,13 @@ namespace NerdQuizWPF
 
         private void ShowImage(BitmapImage bitmap)
         {
-            //iv.Hide();
+
+            if (!iv.IsLoaded)
+            {
+                iv = new ImageViewer();
+            }
             iv.Image.Source = bitmap;
-            
+
             iv.Show();
             iv.Activate();
             WindowExt.MaximizeToSpecificMonitor(iv, vm.ScoreBoardScreen);
@@ -346,9 +356,9 @@ namespace NerdQuizWPF
             if (File.Exists(vm.CurrentQuestion.ImageSavePath))
             {
                 var filePath = vm.CurrentQuestion.ImageSavePath;
-                
+
                 try
-                {                    
+                {
                     var pixelImage = Pixelate(5 + x * 5, filePath);
                     ShowImage(pixelImage);
                 }
@@ -382,57 +392,13 @@ namespace NerdQuizWPF
 
         }
 
-        private void PPSearchClick(object sender, RoutedEventArgs e)
-        {
+       
 
-            var dialog = new System.Windows.Forms.OpenFileDialog();
-            dialog.Filter = "PowerPoint Dateien|*.pptx";
-            dialog.Title = "Präsentation wählen";
 
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                vm.CurrentQuestion.PptxName = System.IO.Path.GetFileName(dialog.FileName);
-                if (!File.Exists(vm.CurrentQuestion.PPTXSavePath))
-                {
-                    File.Copy(dialog.FileName, vm.CurrentQuestion.PPTXSavePath);
-                }
-            }
-
-        }
-
-        private void PPOpenClick(object sender, RoutedEventArgs e)
-        {
-            if (vm.PowerPointVersion != null)
-            {
-                if (File.Exists(vm.CurrentQuestion.PPTXSavePath))
-                {
-                    if (vm.CurrentQuestion.PPTXSavePath.EndsWith(".pptx"))
-                    {
-                        var ppApp = new Microsoft.Office.Interop.PowerPoint.Application();
-                        ppApp.Visible = MsoTriState.msoTrue;
-                        var ppPresens = ppApp.Presentations;
-                        var objPres = ppPresens.Open(vm.CurrentQuestion.PPTXSavePath, MsoTriState.msoFalse, MsoTriState.msoTrue, MsoTriState.msoTrue);
-                        objPres.SlideShowSettings.Run();
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Keine gültige pptx Datei!");
-                    }
-                }
-                else if (!string.IsNullOrWhiteSpace(vm.CurrentQuestion.PptxName))
-                {
-                    MessageBox.Show("Datei existiert nicht!");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Keine PowerPoint Installation gefunden");
-            }
-        }
 
         private void ImageCloseClick(object sender, RoutedEventArgs e)
         {
+            iv.Image.Source = null;
             iv.Hide();
         }
 
