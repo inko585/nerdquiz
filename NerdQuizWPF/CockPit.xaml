@@ -141,8 +141,8 @@
                     <Label Grid.Column="1"  Margin="0,5,0,0" HorizontalAlignment="Right">Start (Sekunden)</Label>
                     <TextBox  Grid.Column="2"  VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Text="{Binding CurrentQuestion.YouTubeStart, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
                 </Grid>
-                
-                
+
+
                 <Label Grid.Row="6" Margin="0,5,10,0" HorizontalContentAlignment="Right"  HorizontalAlignment="Right">Bild</Label>
                 <Grid Grid.Row="6"  Grid.Column="1"  VerticalAlignment="Top" Margin="10,10,10,0">
                     <Grid.ColumnDefinitions>
@@ -152,7 +152,7 @@
                     <TextBox Height="18" Text="{Binding CurrentQuestion.ImageName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"></TextBox>
                     <Button Grid.Column="1" IsEnabled="{Binding PlaySBEnabled}" Width="60" VerticalAlignment="Top" Margin="5,0"  Content="..." Click="ImageSearchClick" />
                 </Grid>
-                
+
                 <Grid Grid.Row="5" Grid.Column="1" Margin="10,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="260*"/>
@@ -160,9 +160,8 @@
                         <ColumnDefinition Width="60*"/>
                         <ColumnDefinition Width="60*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="1"  VerticalAlignment="Top" Margin="5" Click="WebPlayClick">Play (SB)</Button>
-                    <Button Grid.Column="2" VerticalAlignment="Top" Margin="5" Click="WebPlayClickLocal">Play (C)</Button>
-                    <Button Grid.Column="3"  VerticalAlignment="Top" Margin="5" Click="WebPlayStopClick">Stop</Button>
+                    <Button Grid.Column="2"  VerticalAlignment="Top" Margin="5,5,5,0" Click="WebPlayClick" Content="Abspielen"/>
+                    <Button Grid.Column="3"  VerticalAlignment="Top" Margin="5" Click="WebPlayStopClick" Content="Stoppen"/>
                 </Grid>
                 <Label Grid.Row="8"  Margin="0,0,10,0" HorizontalAlignment="Right" FontSize="20" FontWeight="Bold" Foreground="Green">+</Label>
                 <Label Grid.Row="9"  Margin="0,0,13,0" HorizontalAlignment="Right" FontSize="20" FontWeight="Bold" Foreground="Red" RenderTransformOrigin="0.111,0">-</Label>
@@ -288,6 +287,5 @@
         <StatusBarItem Grid.Row="3" Grid.Column="1" Background="#F0F0F0">
             <TextBlock Text="{Binding Status}" Margin="5,0"/>
         </StatusBarItem>
-
     </Grid>
 </Window>

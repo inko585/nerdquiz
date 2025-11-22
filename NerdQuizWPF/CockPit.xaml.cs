@@ -3,6 +3,7 @@ using Microsoft.Office.Interop.PowerPoint;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -31,6 +32,8 @@ namespace NerdQuizWPF
     {
         private NerdQuizViewModel vm;
         private ScoreBoard sb;
+        private Process chrome;
+
         public CockPit()
         {
             InitializeComponent();
@@ -127,13 +130,12 @@ namespace NerdQuizWPF
         {
             try
             {
-                if (vm.CurrentQuestion.Link != "")
+                chrome = Process.Start(new ProcessStartInfo
                 {
-                    wb.Navigate(vm.CurrentQuestion.Link);
-                    wb.Show();
-                    WindowExt.MaximizeToSpecificMonitor(wb, vm.ScoreBoardScreen);
-                }
-
+                    FileName = "chrome.exe",
+                    Arguments = vm.CurrentQuestion.Link,
+                    UseShellExecute = true
+                });
             }
             catch (Exception ex)
             {
@@ -145,8 +147,8 @@ namespace NerdQuizWPF
         {
             try
             {
-                wb.BrowserCore.Navigate("about:blank");
-                wb.Hide();
+                foreach (var p in Process.GetProcessesByName("chrome"))
+                    p.Kill();
             }
             catch (Exception ex)
             {

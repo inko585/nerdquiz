@@ -406,7 +406,13 @@ namespace NerdQuizWPF
         {
             get
             {
-                return "https://www.youtube.com/watch_popup?v=" + YouTubeId + "&autoplay=1" + (int.TryParse(YouTubeStart, out _) ? "&start=" + YouTubeStart : "");
+                string start = "";
+                if (int.TryParse(YouTubeStart, out int seconds))
+                {
+                    start = "&start=" + seconds;
+                }
+
+                return "https://www.youtube.com/watch?v=" + YouTubeId + "?autoplay=1" + start;
             }
         }
 
