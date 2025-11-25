@@ -1,0 +1,51 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--Background-->
+    <SolidColorBrush x:Key="Background" Color="#262625"/>
+    <SolidColorBrush x:Key="Textcolor"  Color="white"/>
+    
+    <!--Cat1-->
+    <SolidColorBrush x:Key="Cat2_100"  Color="#b8dbfc"/>
+    <SolidColorBrush x:Key="Cat2_200"  Color="#9dcdfc"/>
+    <SolidColorBrush x:Key="Cat2_300"  Color="#73B9FF"/>
+    <SolidColorBrush x:Key="Cat2_600"  Color="#2F8CFF"/>
+    <SolidColorBrush x:Key="Cat2_1000" Color="#0063CC"/>
+
+    <!--Cat2-->
+    <SolidColorBrush x:Key="Cat4_100"  Color="#fc92ea"/>
+    <SolidColorBrush x:Key="Cat4_200"  Color="#fc6fe3"/>
+    <SolidColorBrush x:Key="Cat4_300"  Color="#e647c8"/>
+    <SolidColorBrush x:Key="Cat4_600"  Color="#c42da9"/>
+    <SolidColorBrush x:Key="Cat4_1000" Color="#ab1690"/>
+
+    <!--Cat3-->
+    <SolidColorBrush x:Key="Cat3_100"  Color="#e2ccfc"/>
+    <SolidColorBrush x:Key="Cat3_200"  Color="#d7b8fc"/>
+    <SolidColorBrush x:Key="Cat3_300"  Color="#b592e0"/>
+    <SolidColorBrush x:Key="Cat3_600"  Color="#a96afc"/>
+    <SolidColorBrush x:Key="Cat3_1000" Color="#9440FF"/>
+
+    <!--Cat4-->
+    <SolidColorBrush x:Key="Cat5_100"  Color="#fc77a8"/>
+    <SolidColorBrush x:Key="Cat5_200"  Color="#fc5391"/>
+    <SolidColorBrush x:Key="Cat5_300"  Color="#ff2172"/>
+    <SolidColorBrush x:Key="Cat5_600"  Color="#f2025a"/>
+    <SolidColorBrush x:Key="Cat5_1000" Color="#c40249"/>
+
+    <!--Cat5-->
+    <SolidColorBrush x:Key="Cat1_100"  Color="#d4fcf5"/>
+    <SolidColorBrush x:Key="Cat1_200"  Color="#B0FFF0"/>
+    <SolidColorBrush x:Key="Cat1_300"  Color="#7AFDE7"/>
+    <SolidColorBrush x:Key="Cat1_600"  Color="#35E5CB"/>
+    <SolidColorBrush x:Key="Cat1_1000" Color="#009F88"/>
+
+
+    <!--Player Colors-->
+    <SolidColorBrush x:Key="Player1Color" Color="#fc1717"/>
+    <SolidColorBrush x:Key="Player2Color" Color="#fc9003"/>
+    <SolidColorBrush x:Key="Player3Color" Color="#f5ed16"/>
+    <SolidColorBrush x:Key="Player4Color" Color="#54de04"/>
+    <SolidColorBrush x:Key="Player5Color" Color="#03a61c"/>
+
+</ResourceDictionary>

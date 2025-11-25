@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:NerdQuizWPF"
         mc:Ignorable="d"
         Title="NerdQuiz"
-    WindowStartupLocation="Manual" Background="#FF959595"  WindowStyle="None">
+    WindowStartupLocation="Manual" Background="{StaticResource Background}"  WindowStyle="None">
     <Grid>
         <Grid Name="GridWindow" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid.RowDefinitions>
@@ -37,162 +37,156 @@
                 </Grid.RowDefinitions>
                 <Border>
                     <Viewbox StretchDirection="DownOnly">
-                        <TextBlock FontSize="80" Margin="5,0" Text="{Binding Cat1.Text}"/>
+                        <TextBlock FontSize="70" Margin="5,0" Text="{Binding Cat1.Text}" Foreground="{StaticResource Textcolor}"/>
                     </Viewbox>
                 </Border>
                 <Border Grid.Column="1">
                     <Viewbox StretchDirection="DownOnly">
-                        <TextBlock FontSize="70" Margin="5,0" Text="{Binding Cat2.Text}"/>
+                        <TextBlock FontSize="70" Margin="5,0" Text="{Binding Cat2.Text}" Foreground="{StaticResource Textcolor}"/>
                     </Viewbox>
                 </Border>
                 <Border Grid.Column="2">
                     <Viewbox StretchDirection="DownOnly">
-                        <TextBlock FontSize="70" Margin="5,0" Text="{Binding Cat3.Text}"></TextBlock>
+                        <TextBlock FontSize="70" Margin="5,0" Text="{Binding Cat3.Text}" Foreground="{StaticResource Textcolor}"/>
                     </Viewbox>
                 </Border>
                 <Border Grid.Column="3">
                     <Viewbox StretchDirection="DownOnly">
-                        <TextBlock FontSize="70" Margin="5,0" Text="{Binding Cat4.Text}"/>
+                        <TextBlock FontSize="70" Margin="5,0" Text="{Binding Cat4.Text}" Foreground="{StaticResource Textcolor}"/>
                     </Viewbox>
                 </Border>
                 <Border Grid.Column="4">
                     <Viewbox StretchDirection="DownOnly">
-                        <TextBlock FontSize="70" Margin="5,0" Text="{Binding Cat5.Text}"/>
+                        <TextBlock FontSize="70" Margin="5,0" Text="{Binding Cat5.Text}" Foreground="{StaticResource Textcolor}"/>
                     </Viewbox>
 
                 </Border>
-                <!-- START ORANGE -->
-                <Border Grid.Column="0" Grid.Row="1" Background="#FFFF9000" BorderThickness="2">
+                <Border Grid.Column="0" Grid.Row="1" Background="{StaticResource Cat1_100}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat1.Q1.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="0" Grid.Row="2" Background="#FFFF8000" BorderThickness="2">
+                <Border Grid.Column="0" Grid.Row="2" Background="{StaticResource Cat1_200}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat1.Q2.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="0" Grid.Row="3" Background="#FFFF7000" BorderThickness="2">
+                <Border Grid.Column="0" Grid.Row="3" Background="{StaticResource Cat1_300}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat1.Q3.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="0" Grid.Row="4" Background="#FFFF6000" BorderThickness="2">
+                <Border Grid.Column="0" Grid.Row="4" Background="{StaticResource Cat1_600}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat1.Q4.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="0" Grid.Row="5" Background="#FFFF5000" BorderThickness="2">
+                <Border Grid.Column="0" Grid.Row="5" Background="{StaticResource Cat1_1000}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat1.Q5.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <!-- START BLUE -->
-                <Border Grid.Column="1" Grid.Row="1" Background="#FF98DDFF" BorderThickness="2">
+                <Border Grid.Column="1" Grid.Row="1" Background="{StaticResource Cat2_100}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat2.Q1.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="1" Grid.Row="2" Background="#FF7ED3FD" BorderThickness="2">
+                <Border Grid.Column="1" Grid.Row="2" Background="{StaticResource Cat2_200}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat2.Q2.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="1" Grid.Row="3" Background="#FF52BDF1" BorderThickness="2">
+                <Border Grid.Column="1" Grid.Row="3" Background="{StaticResource Cat2_300}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat2.Q3.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="1" Grid.Row="4" Background="#FF2FBAFF" BorderThickness="2">
+                <Border Grid.Column="1" Grid.Row="4" Background="{StaticResource Cat2_600}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat2.Q4.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="1" Grid.Row="5" Background="#FF00AAFF" BorderThickness="2">
+                <Border Grid.Column="1" Grid.Row="5" Background="{StaticResource Cat2_1000}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat2.Q5.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <!-- START RED -->
-                <Border Grid.Column="2" Grid.Row="1" Background="#FFF98F8F" BorderThickness="2">
+                <Border Grid.Column="2" Grid.Row="1" Background="{StaticResource Cat3_100}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat3.Q1.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="2" Grid.Row="2" Background="#FFFF7171" BorderThickness="2">
+                <Border Grid.Column="2" Grid.Row="2" Background="{StaticResource Cat3_200}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat3.Q2.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="2" Grid.Row="3" Background="#FFFF5555" BorderThickness="2">
+                <Border Grid.Column="2" Grid.Row="3" Background="{StaticResource Cat3_300}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat3.Q3.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="2" Grid.Row="4" Background="#FFF13838" BorderThickness="2">
+                <Border Grid.Column="2" Grid.Row="4" Background="{StaticResource Cat3_600}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat3.Q4.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="2" Grid.Row="5" Background="#FFFF1B1B" BorderThickness="2">
+                <Border Grid.Column="2" Grid.Row="5" Background="{StaticResource Cat3_1000}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat3.Q5.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <!-- START GREEN -->
-                <Border Grid.Column="3" Grid.Row="1" Background="#FFB7FFBB" BorderThickness="2">
+                <Border Grid.Column="3" Grid.Row="1" Background="{StaticResource Cat4_100}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat4.Q1.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="3" Grid.Row="2" Background="#FF8AFF8F" BorderThickness="2">
+                <Border Grid.Column="3" Grid.Row="2" Background="{StaticResource Cat4_200}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat4.Q2.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="3" Grid.Row="3" Background="#FF5EFF66" BorderThickness="2">
+                <Border Grid.Column="3" Grid.Row="3" Background="{StaticResource Cat4_300}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat4.Q3.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="3" Grid.Row="4" Background="#FF22FF2D" BorderThickness="2">
+                <Border Grid.Column="3" Grid.Row="4" Background="{StaticResource Cat4_600}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat4.Q4.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="3" Grid.Row="5" Background="#FF00FF0C" BorderThickness="2">
+                <Border Grid.Column="3" Grid.Row="5" Background="{StaticResource Cat4_1000}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat4.Q5.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <!-- START YELLOW -->
-                <Border Grid.Column="4" Grid.Row="1" Background="#FFFFFF9D" BorderThickness="2">
+                <Border Grid.Column="4" Grid.Row="1" Background="{StaticResource Cat5_100}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat5.Q1.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="4" Grid.Row="2" Background="#FFFFFF7B" BorderThickness="2">
+                <Border Grid.Column="4" Grid.Row="2" Background="{StaticResource Cat5_200}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat5.Q2.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="4" Grid.Row="3" Background="#FFFFFF5E" BorderThickness="2">
+                <Border Grid.Column="4" Grid.Row="3" Background="{StaticResource Cat5_300}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat5.Q3.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="4" Grid.Row="4" Background="#FFFFFF2F" BorderThickness="2">
+                <Border Grid.Column="4" Grid.Row="4" Background="{StaticResource Cat5_600}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat5.Q4.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="4" Grid.Row="5" Background="#FFFFFF00" BorderThickness="2">
+                <Border Grid.Column="4" Grid.Row="5" Background="{StaticResource Cat5_1000}" BorderThickness="3">
                     <Viewbox>
                         <TextBlock Text="{Binding Cat5.Q5.ScoreBoardText}"/>
                     </Viewbox>
                 </Border>
             </Grid>
-            <!-- Player -->
             <Grid Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Name="GridPlayer1" Width="1*" />
@@ -205,53 +199,52 @@
                     <RowDefinition Height="1*"></RowDefinition>
                     <RowDefinition Height="2*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Border Background="#FFFF5555">
+                <Border Grid.Column="0" Background="{StaticResource Player1Color}">
                     <Viewbox>
                         <TextBlock Text="{Binding P1.Name}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="1" Background="#FFFFFF00">
+                <Border Grid.Column="1" Background="{StaticResource Player2Color}">
                     <Viewbox>
                         <TextBlock Text="{Binding P2.Name}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="2" Background="#FF5EFF66">
+                <Border Grid.Column="2" Background="{StaticResource Player3Color}">
                     <Viewbox>
                         <TextBlock Text="{Binding P3.Name}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="3" Background="#FFFF5000">
+                <Border Grid.Column="3" Background="{StaticResource Player4Color}">
                     <Viewbox>
                         <TextBlock Text="{Binding P4.Name}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="4" Background="#FF52BDF1">
+                <Border Grid.Column="4" Background="{StaticResource Player5Color}">
                     <Viewbox>
                         <TextBlock Text="{Binding P5.Name}"/>
                     </Viewbox>
                 </Border>
-                <!-- Scores -->
-                <Border Grid.Column="0" Grid.Row="1" Background="#FFFF5555">
+                <Border Grid.Column="0" Grid.Row="1" Background="{StaticResource Player1Color}">
                     <Viewbox>
                         <TextBlock Text="{Binding P1.Score}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="1" Grid.Row="1"  Background="#FFFFFF00">
+                <Border Grid.Column="1" Grid.Row="1"  Background="{StaticResource Player2Color}">
                     <Viewbox>
                         <TextBlock Text="{Binding P2.Score}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="2" Grid.Row="1"  Background="#FF5EFF66">
+                <Border Grid.Column="2" Grid.Row="1"  Background="{StaticResource Player3Color}">
                     <Viewbox>
                         <TextBlock Text="{Binding P3.Score}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="3" Grid.Row="1"  Background="#FFFF5000">
+                <Border Grid.Column="3" Grid.Row="1"  Background="{StaticResource Player4Color}">
                     <Viewbox>
                         <TextBlock Text="{Binding P4.Score}"/>
                     </Viewbox>
                 </Border>
-                <Border Grid.Column="4" Grid.Row="1"  Background="#FF52BDF1">
+                <Border Grid.Column="4" Grid.Row="1"  Background="{StaticResource Player5Color}">
                     <Viewbox>
                         <TextBlock Text="{Binding P5.Score}"/>
                     </Viewbox>

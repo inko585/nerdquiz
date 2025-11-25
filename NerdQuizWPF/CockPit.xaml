@@ -41,7 +41,7 @@
             <TextBox  Background="LightGray" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Padding="5" Grid.Column="3" FontSize="16" FontWeight="Bold" Text="{Binding Cat3.Text, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBox  Background="LightGray" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Padding="5" Grid.Column="4" FontSize="16" FontWeight="Bold" Text="{Binding Cat4.Text, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBox  Background="LightGray" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Padding="5" Grid.Column="5" FontSize="16" FontWeight="Bold" Text="{Binding Cat5.Text, UpdateSourceTrigger=PropertyChanged}"/>
-            <Grid Grid.Row="1" Background="#FFFF5555" Grid.ColumnSpan="2">
+            <Grid Grid.Row="1" Background="{StaticResource Player1Color}" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="4*"/>
@@ -50,7 +50,7 @@
                 <TextBox  VerticalAlignment="Center" BorderThickness="0" Grid.Column="1" Padding="5" FontSize="16" FontWeight="Bold" Background="Transparent" Text="{Binding P1.Name}"/>
             </Grid>
 
-            <Grid Grid.Row="1" Background="#FFFFFF00" Grid.Column="2">
+            <Grid Grid.Row="1" Background="{StaticResource Player2Color}" Grid.Column="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="4*"/>
@@ -59,7 +59,7 @@
                 <TextBox  VerticalAlignment="Center" BorderThickness="0"  Grid.Column="1" Padding="5" FontSize="16" FontWeight="Bold" Background="Transparent" Text="{Binding P2.Name}"/>
             </Grid>
 
-            <Grid Grid.Row="1" Background="#FF5EFF66" Grid.Column="3">
+            <Grid Grid.Row="1" Background="{StaticResource Player3Color}" Grid.Column="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="4*"/>
@@ -67,7 +67,7 @@
                 <CheckBox VerticalAlignment="Center"  IsEnabled="{Binding P3.Deselectable}" Content="" IsChecked="{Binding P3.IsActive}" Height="16" HorizontalAlignment="Center"/>
                 <TextBox  VerticalAlignment="Center" BorderThickness="0" Grid.Column="1" Padding="5" FontSize="16" FontWeight="Bold" Background="Transparent" Text="{Binding P3.Name}"/>
             </Grid>
-            <Grid Grid.Row="1" Background="#FFFF5000" Grid.Column="4">
+            <Grid Grid.Row="1" Background="{StaticResource Player4Color}" Grid.Column="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="4*"/>
@@ -75,7 +75,7 @@
                 <CheckBox VerticalAlignment="Center" IsEnabled="{Binding P3.Deselectable}" Content="" IsChecked="{Binding P4.IsActive}"  Height="16" HorizontalAlignment="Center"/>
                 <TextBox  VerticalAlignment="Center" BorderThickness="0" Grid.Column="1" Padding="5" FontSize="16" FontWeight="Bold" Background="Transparent" Text="{Binding P4.Name}"/>
             </Grid>
-            <Grid Grid.Row="1" Background="#FF52BDF1" Grid.Column="5">
+            <Grid Grid.Row="1" Background="{StaticResource Player5Color}" Grid.Column="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="4*"/>
@@ -176,11 +176,11 @@
 
                     </Grid.ColumnDefinitions>
 
-                    <Button VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P1.Name}" Tag="{Binding P1}" Height ="30" Background="#FFFF5555" Click="Answer_Plus_Click"/>
-                    <Button Grid.Column="1" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P2.Name}" Tag="{Binding P2}" Height ="30" Background="#FFFFFF00" Click="Answer_Plus_Click"/>
-                    <Button Grid.Column="2" IsEnabled="{Binding P3.IsActive}" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P3.Name}" Tag="{Binding P3}" Height ="30" Background="#FF5EFF66" Click="Answer_Plus_Click"/>
-                    <Button Grid.Column="3" IsEnabled="{Binding P4.IsActive}" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P4.Name}" Tag="{Binding P4}" Height ="30" Background="#FFFF5000" Click="Answer_Plus_Click"/>
-                    <Button Grid.Column="4" IsEnabled="{Binding P5.IsActive}" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P5.Name}" Tag="{Binding P5}" Height ="30" Background="#FF52BDF1" Click="Answer_Plus_Click"/>
+                    <Button Grid.Column="0" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P1.Name}" Tag="{Binding P1}" Height ="30" Background="{StaticResource Player1Color}" Click="Answer_Plus_Click"/>
+                    <Button Grid.Column="1" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P2.Name}" Tag="{Binding P2}" Height ="30" Background="{StaticResource Player2Color}" Click="Answer_Plus_Click"/>
+                    <Button Grid.Column="2" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P3.Name}" Tag="{Binding P3}" Height ="30" Background="{StaticResource Player3Color}" Click="Answer_Plus_Click" IsEnabled="{Binding P3.IsActive}"/>
+                    <Button Grid.Column="3" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P4.Name}" Tag="{Binding P4}" Height ="30" Background="{StaticResource Player4Color}" Click="Answer_Plus_Click" IsEnabled="{Binding P4.IsActive}"/>
+                    <Button Grid.Column="4" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P5.Name}" Tag="{Binding P5}" Height ="30" Background="{StaticResource Player5Color}" Click="Answer_Plus_Click" IsEnabled="{Binding P5.IsActive}"/>
 
 
                 </Grid>
@@ -194,11 +194,11 @@
 
 
                     </Grid.ColumnDefinitions>
-                    <Button VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P1.Name}" Tag="{Binding P1}" Height ="30" Background="#FFFF5555" Click="Answer_Minus_Click"/>
-                    <Button Grid.Column="1" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P2.Name}" Tag="{Binding P2}" Height ="30" Background="#FFFFFF00" Click="Answer_Minus_Click"/>
-                    <Button Grid.Column="2" IsEnabled="{Binding P3.IsActive}" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P3.Name}" Tag="{Binding P3}" Height ="30" Background="#FF5EFF66" Click="Answer_Minus_Click"/>
-                    <Button Grid.Column="3" IsEnabled="{Binding P4.IsActive}" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P4.Name}" Tag="{Binding P4}" Height ="30" Background="#FFFF5000" Click="Answer_Minus_Click"/>
-                    <Button Grid.Column="4" IsEnabled="{Binding P5.IsActive}" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P5.Name}" Tag="{Binding P5}" Height ="30" Background="#FF52BDF1" Click="Answer_Minus_Click"/>
+                    <Button Grid.Column="0" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P1.Name}" Tag="{Binding P1}" Height ="30" Background="{StaticResource Player1Color}" Click="Answer_Minus_Click"/>
+                    <Button Grid.Column="1" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P2.Name}" Tag="{Binding P2}" Height ="30" Background="{StaticResource Player2Color}" Click="Answer_Minus_Click"/>
+                    <Button Grid.Column="2" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P3.Name}" Tag="{Binding P3}" Height ="30" Background="{StaticResource Player3Color}" Click="Answer_Minus_Click" IsEnabled="{Binding P3.IsActive}"/>
+                    <Button Grid.Column="3" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P4.Name}" Tag="{Binding P4}" Height ="30" Background="{StaticResource Player4Color}" Click="Answer_Minus_Click" IsEnabled="{Binding P4.IsActive}"/>
+                    <Button Grid.Column="4" VerticalAlignment ="Bottom" Margin="10, 5" Content="{Binding P5.Name}" Tag="{Binding P5}" Height ="30" Background="{StaticResource Player5Color}" Click="Answer_Minus_Click" IsEnabled="{Binding P5.IsActive}"/>
 
 
                 </Grid>
@@ -246,35 +246,35 @@
 
                 <ListBox x:Name="listbox" Grid.Row="1" SelectionChanged="ListBox_SelectionChanged">
 
-                    <ListBoxItem Background="#FFFF9000" Content ="{Binding Cat1.Q1.Description}" Tag="{Binding Cat1.Q1}" IsEnabled="{Binding Cat1.Q1.Closed}"/>
-                    <ListBoxItem Background="#FFFF8000" Content ="{Binding Cat1.Q2.Description}" Tag="{Binding Cat1.Q2}"/>
-                    <ListBoxItem Background="#FFFF7000" Content ="{Binding Cat1.Q3.Description}" Tag="{Binding Cat1.Q3}"/>
-                    <ListBoxItem Background="#FFFF6000" Content ="{Binding Cat1.Q4.Description}" Tag="{Binding Cat1.Q4}"/>
-                    <ListBoxItem Background="#FFFF5000" Content ="{Binding Cat1.Q5.Description}" Tag="{Binding Cat1.Q5}"/>
+                    <ListBoxItem Background="{StaticResource Cat1_100}"  Content ="{Binding Cat1.Q1.Description}" Tag="{Binding Cat1.Q1}" IsEnabled="{Binding Cat1.Q1.Closed}"/>
+                    <ListBoxItem Background="{StaticResource Cat1_200}"  Content ="{Binding Cat1.Q2.Description}" Tag="{Binding Cat1.Q2}"/>
+                    <ListBoxItem Background="{StaticResource Cat1_300}"  Content ="{Binding Cat1.Q3.Description}" Tag="{Binding Cat1.Q3}"/>
+                    <ListBoxItem Background="{StaticResource Cat1_600}"  Content ="{Binding Cat1.Q4.Description}" Tag="{Binding Cat1.Q4}"/>
+                    <ListBoxItem Background="{StaticResource Cat1_1000}" Content ="{Binding Cat1.Q5.Description}" Tag="{Binding Cat1.Q5}"/>
 
-                    <ListBoxItem Background="#FF98DDFF" Content ="{Binding Cat2.Q1.Description}" Tag="{Binding Cat2.Q1}"/>
-                    <ListBoxItem Background="#FF7ED3FD" Content ="{Binding Cat2.Q2.Description}" Tag="{Binding Cat2.Q2}"/>
-                    <ListBoxItem Background="#FF52BDF1" Content ="{Binding Cat2.Q3.Description}" Tag="{Binding Cat2.Q3}"/>
-                    <ListBoxItem Background="#FF2FBAFF" Content ="{Binding Cat2.Q4.Description}" Tag="{Binding Cat2.Q4}"/>
-                    <ListBoxItem Background="#FF00AAFF" Content ="{Binding Cat2.Q5.Description}" Tag="{Binding Cat2.Q5}"/>
+                    <ListBoxItem Background="{StaticResource Cat2_100}"  Content ="{Binding Cat2.Q1.Description}" Tag="{Binding Cat2.Q1}"/>
+                    <ListBoxItem Background="{StaticResource Cat2_200}"  Content ="{Binding Cat2.Q2.Description}" Tag="{Binding Cat2.Q2}"/>
+                    <ListBoxItem Background="{StaticResource Cat2_300}"  Content ="{Binding Cat2.Q3.Description}" Tag="{Binding Cat2.Q3}"/>
+                    <ListBoxItem Background="{StaticResource Cat2_600}"  Content ="{Binding Cat2.Q4.Description}" Tag="{Binding Cat2.Q4}"/>
+                    <ListBoxItem Background="{StaticResource Cat2_1000}" Content ="{Binding Cat2.Q5.Description}" Tag="{Binding Cat2.Q5}"/>
 
-                    <ListBoxItem Background="#FFF98F8F" Content ="{Binding Cat3.Q1.Description}" Tag="{Binding Cat3.Q1}"/>
-                    <ListBoxItem Background="#FFFF7171" Content ="{Binding Cat3.Q2.Description}" Tag="{Binding Cat3.Q2}"/>
-                    <ListBoxItem Background="#FFFF5555" Content ="{Binding Cat3.Q3.Description}" Tag="{Binding Cat3.Q3}"/>
-                    <ListBoxItem Background="#FFF13838" Content ="{Binding Cat3.Q4.Description}" Tag="{Binding Cat3.Q4}"/>
-                    <ListBoxItem Background="#FFFF1B1B" Content ="{Binding Cat3.Q5.Description}" Tag="{Binding Cat3.Q5}"/>
+                    <ListBoxItem Background="{StaticResource Cat3_100}"  Content ="{Binding Cat3.Q1.Description}" Tag="{Binding Cat3.Q1}"/>
+                    <ListBoxItem Background="{StaticResource Cat3_200}"  Content ="{Binding Cat3.Q2.Description}" Tag="{Binding Cat3.Q2}"/>
+                    <ListBoxItem Background="{StaticResource Cat3_300}"  Content ="{Binding Cat3.Q3.Description}" Tag="{Binding Cat3.Q3}"/>
+                    <ListBoxItem Background="{StaticResource Cat3_600}"  Content ="{Binding Cat3.Q4.Description}" Tag="{Binding Cat3.Q4}"/>
+                    <ListBoxItem Background="{StaticResource Cat3_1000}" Content ="{Binding Cat3.Q5.Description}" Tag="{Binding Cat3.Q5}"/>
 
-                    <ListBoxItem Background="#FFB7FFBB" Content ="{Binding Cat4.Q1.Description}" Tag="{Binding Cat4.Q1}"/>
-                    <ListBoxItem Background="#FF8AFF8F" Content ="{Binding Cat4.Q2.Description}" Tag="{Binding Cat4.Q2}"/>
-                    <ListBoxItem Background="#FF5EFF66" Content ="{Binding Cat4.Q3.Description}" Tag="{Binding Cat4.Q3}"/>
-                    <ListBoxItem Background="#FF22FF2D" Content ="{Binding Cat4.Q4.Description}" Tag="{Binding Cat4.Q4}"/>
-                    <ListBoxItem Background="#FF00FF0C" Content ="{Binding Cat4.Q5.Description}" Tag="{Binding Cat4.Q5}"/>
+                    <ListBoxItem Background="{StaticResource Cat4_100}"  Content ="{Binding Cat4.Q1.Description}" Tag="{Binding Cat4.Q1}"/>
+                    <ListBoxItem Background="{StaticResource Cat4_200}"  Content ="{Binding Cat4.Q2.Description}" Tag="{Binding Cat4.Q2}"/>
+                    <ListBoxItem Background="{StaticResource Cat4_300}"  Content ="{Binding Cat4.Q3.Description}" Tag="{Binding Cat4.Q3}"/>
+                    <ListBoxItem Background="{StaticResource Cat4_600}"  Content ="{Binding Cat4.Q4.Description}" Tag="{Binding Cat4.Q4}"/>
+                    <ListBoxItem Background="{StaticResource Cat4_1000}" Content ="{Binding Cat4.Q5.Description}" Tag="{Binding Cat4.Q5}"/>
 
-                    <ListBoxItem Background="#FFFFFF9D" Content ="{Binding Cat5.Q1.Description}" Tag="{Binding Cat5.Q1}"/>
-                    <ListBoxItem Background="#FFFFFF7B" Content ="{Binding Cat5.Q2.Description}" Tag="{Binding Cat5.Q2}"/>
-                    <ListBoxItem Background="#FFFFFF5E" Content ="{Binding Cat5.Q3.Description}" Tag="{Binding Cat5.Q3}"/>
-                    <ListBoxItem Background="#FFFFFF2F" Content ="{Binding Cat5.Q4.Description}" Tag="{Binding Cat5.Q4}"/>
-                    <ListBoxItem Background="#FFFFFF00" Content ="{Binding Cat5.Q5.Description}" Tag="{Binding Cat5.Q5}"/>
+                    <ListBoxItem Background="{StaticResource Cat5_100}"  Content ="{Binding Cat5.Q1.Description}" Tag="{Binding Cat5.Q1}"/>
+                    <ListBoxItem Background="{StaticResource Cat5_200}"  Content ="{Binding Cat5.Q2.Description}" Tag="{Binding Cat5.Q2}"/>
+                    <ListBoxItem Background="{StaticResource Cat5_300}"  Content ="{Binding Cat5.Q3.Description}" Tag="{Binding Cat5.Q3}"/>
+                    <ListBoxItem Background="{StaticResource Cat5_600}"  Content ="{Binding Cat5.Q4.Description}" Tag="{Binding Cat5.Q4}"/>
+                    <ListBoxItem Background="{StaticResource Cat5_1000}" Content ="{Binding Cat5.Q5.Description}" Tag="{Binding Cat5.Q5}"/>
 
 
                 </ListBox>
