@@ -154,7 +154,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:v4.5 "
+                "FrameworkVersion" = "8:v4.5  "
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=395269"
                 }
@@ -331,21 +331,21 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:NerdQuiz"
-        "ProductCode" = "8:{13CC6327-83B7-4524-AF80-E0E1DBA62EA4}"
-        "PackageCode" = "8:{48EA6AF5-B41E-47C8-9217-260E9B450D10}"
+        "ProductCode" = "8:{F1C1CD64-2FF1-4AC5-B432-AD4F75BF7D1E}"
+        "PackageCode" = "8:{3BD3E429-A8BE-4D29-9E9D-488D7742196A}"
         "UpgradeCode" = "8:{BB55303D-0907-4299-AA24-5DA6F40A1D16}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.0.11"
+        "ProductVersion" = "8:2.0.12"
         "Manufacturer" = "8:NerdQuiz"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:NerdQuiz"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Jonas Nießner, Jens Marshall"
+        "ARPCONTACT" = "8:Jonas Nießner, Jens Marshall, Moritz Keilwerth"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -493,7 +493,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_E53AF3F983EC4FB4B417E61A0412DB3F"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Progress"
+                    "DisplayName" = "8:Status"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdProgressDlg.wid"
@@ -537,7 +537,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_5E4874EAED874C62AE6BE20A0C0E3C33"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirm Installation"
+                    "DisplayName" = "8:Installation bestätigen"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminConfirmDlg.wid"
@@ -559,7 +559,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_60EFAFA1062F4D65A4B21D82ADEAD699"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Welcome"
+                    "DisplayName" = "8:Willkommen"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminWelcomeDlg.wid"
@@ -607,7 +607,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_CF56A334004E471B8B38E83276F9F699"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Installation Folder"
+                    "DisplayName" = "8:Installationsordner"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFolderDlg.wid"
@@ -638,7 +638,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_A6CDC546871F41EF9C2048ADF073B0F2"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Finished"
+                    "DisplayName" = "8:Fertig"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFinishedDlg.wid"
@@ -669,7 +669,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_2F2C550E7A984C4C9AC989649751693A"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Installation Folder"
+                    "DisplayName" = "8:Installationsordner"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFolderDlg.wid"
@@ -704,7 +704,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_A937FB32513D42929FD1D723CAE8F899"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Welcome"
+                    "DisplayName" = "8:Willkommen"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdWelcomeDlg.wid"
@@ -752,7 +752,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_C0B44EB2B41443E89994FC61AE3134CE"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirm Installation"
+                    "DisplayName" = "8:Installation bestätigen"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdConfirmDlg.wid"
@@ -795,7 +795,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_5E7E95D85E49493B8E7B2A5F201E84A0"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Progress"
+                    "DisplayName" = "8:Status"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminProgressDlg.wid"
@@ -839,7 +839,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_402B82BA84C84F89A29EFB1DCB9EA6C5"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Finished"
+                    "DisplayName" = "8:Fertig"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFinishedDlg.wid"
