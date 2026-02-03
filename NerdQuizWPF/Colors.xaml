@@ -4,46 +4,41 @@
     <!--Background-->
     <SolidColorBrush x:Key="Background" Color="#262625"/>
     <SolidColorBrush x:Key="Textcolor"  Color="white"/>
-    
-    <!--Cat1-->
-    <SolidColorBrush x:Key="Cat2_100"  Color="#b8dbfc"/>
-    <SolidColorBrush x:Key="Cat2_200"  Color="#9dcdfc"/>
-    <SolidColorBrush x:Key="Cat2_300"  Color="#73B9FF"/>
-    <SolidColorBrush x:Key="Cat2_600"  Color="#2F8CFF"/>
-    <SolidColorBrush x:Key="Cat2_1000" Color="#0063CC"/>
 
-    <!--Cat2-->
-    <SolidColorBrush x:Key="Cat4_100"  Color="#fc92ea"/>
-    <SolidColorBrush x:Key="Cat4_200"  Color="#fc6fe3"/>
-    <SolidColorBrush x:Key="Cat4_300"  Color="#e647c8"/>
-    <SolidColorBrush x:Key="Cat4_600"  Color="#c42da9"/>
-    <SolidColorBrush x:Key="Cat4_1000" Color="#ab1690"/>
+	<!--Categories 1-5-->
+	<SolidColorBrush x:Key="Cat1_100"  Color="#F7DCDC"/>
+	<SolidColorBrush x:Key="Cat1_200"  Color="#F0B8B8"/>
+	<SolidColorBrush x:Key="Cat1_300"  Color="#E48C8C"/>
+	<SolidColorBrush x:Key="Cat1_600"  Color="#CC4A4A"/>
+	<SolidColorBrush x:Key="Cat1_1000" Color="#9E1F1F"/>
 
-    <!--Cat3-->
-    <SolidColorBrush x:Key="Cat3_100"  Color="#e2ccfc"/>
-    <SolidColorBrush x:Key="Cat3_200"  Color="#d7b8fc"/>
-    <SolidColorBrush x:Key="Cat3_300"  Color="#b592e0"/>
-    <SolidColorBrush x:Key="Cat3_600"  Color="#a96afc"/>
-    <SolidColorBrush x:Key="Cat3_1000" Color="#9440FF"/>
+	<SolidColorBrush x:Key="Cat2_100"  Color="#DCF2E3"/>
+	<SolidColorBrush x:Key="Cat2_200"  Color="#BEE6CC"/>
+	<SolidColorBrush x:Key="Cat2_300"  Color="#8FD3A4"/>
+	<SolidColorBrush x:Key="Cat2_600"  Color="#45B96A"/>
+	<SolidColorBrush x:Key="Cat2_1000" Color="#1E8F4A"/>
 
-    <!--Cat4-->
-    <SolidColorBrush x:Key="Cat5_100"  Color="#fc77a8"/>
-    <SolidColorBrush x:Key="Cat5_200"  Color="#fc5391"/>
-    <SolidColorBrush x:Key="Cat5_300"  Color="#ff2172"/>
-    <SolidColorBrush x:Key="Cat5_600"  Color="#f2025a"/>
-    <SolidColorBrush x:Key="Cat5_1000" Color="#c40249"/>
+	<SolidColorBrush x:Key="Cat3_100"  Color="#DCEBFA"/>
+	<SolidColorBrush x:Key="Cat3_200"  Color="#BFD9F7"/>
+	<SolidColorBrush x:Key="Cat3_300"  Color="#8DBCF2"/>
+	<SolidColorBrush x:Key="Cat3_600"  Color="#3B8EEA"/>
+	<SolidColorBrush x:Key="Cat3_1000" Color="#0B5FC1"/>
 
-    <!--Cat5-->
-    <SolidColorBrush x:Key="Cat1_100"  Color="#d4fcf5"/>
-    <SolidColorBrush x:Key="Cat1_200"  Color="#B0FFF0"/>
-    <SolidColorBrush x:Key="Cat1_300"  Color="#7AFDE7"/>
-    <SolidColorBrush x:Key="Cat1_600"  Color="#35E5CB"/>
-    <SolidColorBrush x:Key="Cat1_1000" Color="#009F88"/>
+	<SolidColorBrush x:Key="Cat4_100"  Color="#EFE4DA"/>
+	<SolidColorBrush x:Key="Cat4_200"  Color="#E0C8B2"/>
+	<SolidColorBrush x:Key="Cat4_300"  Color="#C8A07E"/>
+	<SolidColorBrush x:Key="Cat4_600"  Color="#9B6A3F"/>
+	<SolidColorBrush x:Key="Cat4_1000" Color="#6A4324"/>
 
-
-    <!--Player Colors-->
-    <SolidColorBrush x:Key="Player1Color" Color="#fc1717"/>
-    <SolidColorBrush x:Key="Player2Color" Color="#fc9003"/>
+	<SolidColorBrush x:Key="Cat5_100"  Color="#D8F2F0"/>
+	<SolidColorBrush x:Key="Cat5_200"  Color="#B6E6E2"/>
+	<SolidColorBrush x:Key="Cat5_300"  Color="#7FD6CE"/>
+	<SolidColorBrush x:Key="Cat5_600"  Color="#2EB3A8"/>
+	<SolidColorBrush x:Key="Cat5_1000" Color="#0F7F77"/>
+	
+	<!--Player Colors-->
+    <SolidColorBrush x:Key="Player1Color" Color="#DF2D71"/>
+    <SolidColorBrush x:Key="Player2Color" Color="#F69E00"/>
     <SolidColorBrush x:Key="Player3Color" Color="#f5ed16"/>
     <SolidColorBrush x:Key="Player4Color" Color="#54de04"/>
     <SolidColorBrush x:Key="Player5Color" Color="#03a61c"/>
